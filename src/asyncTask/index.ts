@@ -6,14 +6,14 @@ interface Rules {
   val: any
 }
 
-export function getAsyncTask(request: Awaitable<any>, rules: Rules[], asyncTime = 1000, maxTimes = 6) {
+export function getAsyncTask(request: Awaitable<any>, rules: Rules[], asyncTime = 1000, maxTimes = -1) {
   let timer: string | number | NodeJS.Timeout | undefined
   let index = 0
   return new Promise((resolve) => {
     const getAsyncTask = async () => {
       const res = await request
       const isComplete = rules.every(({ keys, val }) => getObjVal(res, keys) === val)
-      if (isComplete || index > maxTimes) {
+      if (isComplete || (maxTimes >= 0 && index > maxTimes)) {
         clearTimeout(timer)
         resolve(res)
       }
