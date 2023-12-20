@@ -19,30 +19,35 @@ const getPost = () => {
     }, 1000)
   })
 }
-onMounted(() => {
-  // const rules = [
-  //   {
-  //     keys: 'id',
-  //     val: 4,
-  //   },
-  // ]
-  // getAsyncTask(getPost(),rules).then((post) => {
-  //   console.log(post);
-  // });
-  const obj = {
-    name: 'John',
-    age: null,
-    listB:[],
-    address: {
-      street: '123 Main St',
-      city: '',
-      country: 'USA',
-      listA:[]
+let handleStop = null
+onMounted(async () => {
+  const {task,stop} = getAsyncTask(getPost,{
+    rules:[
+    {
+      keys: 'id',
+      val: 4,
     },
-    hobbies: ['reading', '', 'swimming']
-  };
-  const result = removeEmptyValues(obj);
-  console.log(result);
+  ],
+    params: {
+      id: 4,
+    },
+  })
+  handleStop = stop
+  console.log('🎉-----task-----', await task);
+  // const obj = {
+  //   name: 'John',
+  //   age: null,
+  //   listB:[],
+  //   address: {
+  //     street: '123 Main St',
+  //     city: '',
+  //     country: 'USA',
+  //     listA:[]
+  //   },
+  //   hobbies: ['reading', '', 'swimming']
+  // };
+  // const result = removeEmptyValues(obj);
+  // console.log(result);
 });
 
 
