@@ -63,5 +63,9 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.7",
     "vitest": "^1.0.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
