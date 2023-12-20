@@ -9,5 +9,8 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "./play"
+  ]
 }
