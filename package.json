@@ -1,0 +1,67 @@
+{
+  "name": "@iceywu/utils",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.12.0",
+  "description": "nothing to use 🧪",
+  "author": "Icey Wu <3128006406@qq.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/iceywu",
+  "homepage": "https://github.com/iceywu/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iceywu/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iceywu/utils/issues"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "nr build --watch",
+    "lint": "eslint .",
+    "lint-fix": "nr lint --fix",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp --commit --push --tag && npm publish --registry https://registry.npmjs.org",
+    "start": "esno src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.4.4",
+    "@antfu/ni": "^0.21.12",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/node": "^20.10.4",
+    "@types/throttle-debounce": "^5.0.2",
+    "bumpp": "^9.2.1",
+    "eslint": "npm:eslint-ts-patch@8.55.0-1",
+    "eslint-ts-patch": "8.55.0-1",
+    "esno": "^4.0.0",
+    "p-limit": "^5.0.0",
+    "rollup": "^4.7.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.0",
+    "throttle-debounce": "5.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7",
+    "vitest": "^1.0.4"
+  }
+}
