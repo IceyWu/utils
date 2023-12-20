@@ -24,13 +24,11 @@ yarn add vue-directives-lib
 
 ```ts
 // main.ts
-import { createApp } from "vue";
-import App from "./App.vue";
-import vueDirectives from "vue-directives-lib";
+import { createApp } from 'vue'
+import App from './App.vue'
 
-const app = createApp(App);
-app.use(vueDirectives);
-app.mount("#app");
+const app = createApp(App)
+app.mount('#app')
 ```
 
 - Local import

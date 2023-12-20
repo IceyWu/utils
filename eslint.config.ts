@@ -7,4 +7,7 @@ export default antfu({
       'ts/prefer-ts-expect-error': 'off',
     },
   },
+
+  ignores: ['play/', 'docs/'],
+
 })

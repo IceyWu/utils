@@ -23,8 +23,9 @@ export function removeEmptyValues(obj: any) {
   const result: any = {}
 
   Object.entries(obj).forEach(([key, value]) => {
-    if (value !== null && value !== undefined && value.length !== 0)
-      result[key] = removeEmptyValues(value)
+    const val: any = value
+    if (val !== null && val !== undefined && val?.length !== 0)
+      result[key] = removeEmptyValues(val)
   })
 
   return result
