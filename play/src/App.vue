@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { getAsyncTask, removeEmptyValues } from "../../src";
+import { getAsyncTask, removeEmptyValues,getFileType,formatNumber ,randomString,debounce,throttle,sortObj,deepClone} from "../../src";
 let index = 0
 const getPost = () => {
   index++
@@ -21,19 +21,19 @@ const getPost = () => {
 }
 let handleStop = null
 onMounted(async () => {
-  const {task,stop} = getAsyncTask(getPost,{
-    rules:[
-    {
-      keys: 'id',
-      val: 4,
-    },
-  ],
-    params: {
-      id: 4,
-    },
-  })
-  handleStop = stop
-  console.log('🎉-----task-----', await task);
+  // const {task,stop} = getAsyncTask(getPost,{
+  //   rules:[
+  //   {
+  //     keys: 'id',
+  //     val: 4,
+  //   },
+  // ],
+  //   params: {
+  //     id: 4,
+  //   },
+  // })
+  // handleStop = stop
+  // console.log('🎉-----task-----', await task);
   // const obj = {
   //   name: 'John',
   //   age: null,
@@ -48,7 +48,61 @@ onMounted(async () => {
   // };
   // const result = removeEmptyValues(obj);
   // console.log(result);
+  getFileTypeFunc()
+  formatNumberFunc()
+  randomStringFunc()
+  debounceFunc()
+  throttleFunc()
+  sortObjFunc()
+  deepCloneFunc()
 });
+
+const getFileTypeFunc  = () => {
+  const fileUrl = 'https://www.baidu.com/img/bd_logo1.png'
+  console.log('🌳-----getFileTypeFunc-----', getFileType(fileUrl));
+}
+const formatNumberFunc  = () => {
+  const num = 123456789
+  console.log('🌳-----formatNumberFunc-----', formatNumber(num));
+}
+const randomStringFunc  = () => {
+  console.log('🌳-----randomStringFunc-----', randomString(20));
+}
+const debounceFunc  = () => {
+  console.log('🌳-----debounceFunc-----');
+
+}
+const throttleFunc  = () => {
+  console.log('🌳-----throttleFunc-----');
+}
+const sortObjFunc  = () => {
+  const obj = {
+    name: 'John',
+    age: 30,
+    a:1,
+    address: {
+      street: '123 Main St',
+      city: 'New York',
+      country: 'USA'
+    },
+    hobbies: ['reading', 'swimming']
+  };
+  console.log('🌳-----sortObjFunc-----',sortObj(obj));
+}
+const deepCloneFunc  = () => {
+  const obj = {
+    name: 'John',
+    age: 30,
+    address: {
+      street: '123 Main St',
+      city: 'New York',
+      country: 'USA'
+    },
+    hobbies: ['reading', 'swimming']
+  };
+  console.log('🌳-----deepCloneFunc-----',deepClone(obj));
+}
+
 
 
 </script>

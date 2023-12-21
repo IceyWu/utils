@@ -25,3 +25,4 @@ import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
 ```
 
 **Docs** | [文档](./docs/base.md)
+**Docs2** | [文档2](./docs/base-lite.md)
