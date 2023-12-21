@@ -40,20 +40,6 @@ export function removeEmptyValues(obj: any) {
   return result
 }
 
-/**
- * @description 返回两对象中变化过的数据
- * @param oldVal 旧对象
- * @param newVal 新对象
- * @returns { differences } differences:变化过的数据
- */
-export function compareObjects(oldVal: any, newVal: any): any {
-  const differences: any = {}
-  Object.keys(oldVal).forEach((key) => {
-    if (oldVal[key] !== newVal[key])
-      differences[key] = newVal[key]
-  })
-  return differences
-}
 
 /**
  * @description 获取文件类型
