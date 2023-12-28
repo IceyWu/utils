@@ -8,6 +8,6 @@ export default antfu({
     },
   },
 
-  ignores: ['play/', 'docs/'],
+  ignores: ['play/', 'docsT/'],
 
 })
