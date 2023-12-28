@@ -40,7 +40,9 @@
     "release": "bumpp --commit --push --tag && npm publish --registry https://registry.npmjs.org",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "docs": "npm -C docs run docs:dev",
+    "play": "npm -C play run dev"
   },
   "dependencies": {
     "lodash": "^4.17.21"
