@@ -63,7 +63,7 @@ export function downloadFile(url: string, fileName: string, option?: DownloadFil
   return {
     onSuccess: onsuccess.on,
     onProcess: onprocess.on,
-    onError: onsuccess.onError,
+    onError: onsuccess.on,
     stop,
   }
 }
