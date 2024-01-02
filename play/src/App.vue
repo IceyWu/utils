@@ -17,14 +17,14 @@ onMounted( () => {
 
 
 const download  = () => {
-  const fileUrl = 'http://10.0.30.139:9000/zs-famous-teacher/2023-12-27/88339ea5-ae0a-4618-95a3-844b8291d26a.mp4'
-  const fileName = '1.mp4'
-  const {onprocess,onsuccess,stop} =  downloadFile(fileUrl,fileName)
-  onprocess((e:any) => {
+  const fileUrl = 'http://nest-js.oss-accelerate.aliyuncs.com/nestTest/noId/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20231206132229.jpg'
+  const fileName = 'test.jpg'
+  const {onProcess,onSuccess,stop} =  downloadFile(fileUrl,fileName)
+  onProcess((e:any) => {
     console.log('🐬-----onprocess-----', e);
   })
-  onsuccess((e:any) => {
-    console.log('🐬-----onsuccess-----', e);
+  onSuccess((e:any) => {
+    console.log('🐬-----onSuccess-----', e);
   })
 }
 
