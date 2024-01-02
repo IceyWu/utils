@@ -1,5 +1,3 @@
-
-
 # useDark
 
 ::: tip 适用于 `Vue3`、`Nuxt3`
@@ -23,7 +21,7 @@ const { isDark } = useDark();
 
 ```ts
 //  在此处配置参数
-const {} = useDark(options);
+const {} = useDark(options)
 ```
 
 <div class="pure-no-border">

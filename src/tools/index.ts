@@ -40,7 +40,6 @@ export function removeEmptyValues(obj: any) {
   return result
 }
 
-
 /**
  * @description 获取文件类型
  * @param url 文件地址

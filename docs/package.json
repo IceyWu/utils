@@ -6,6 +6,10 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
+  "dependencies": {
+    "unplugin-vue-components": "^0.26.0",
+    "vue": "^3.3.13"
+  },
   "devDependencies": {
     "@iceywu/utils": "^0.0.34",
     "@iconify-json/carbon": "^1.1.24",
@@ -22,9 +26,5 @@
     "unocss": "^0.58.0    ",
     "vite": "^5.0.10",
     "vitepress": "1.0.0-rc.31"
-  },
-  "dependencies": {
-    "unplugin-vue-components": "^0.26.0",
-    "vue": "^3.3.13"
   }
 }

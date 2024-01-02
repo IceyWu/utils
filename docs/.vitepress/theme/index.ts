@@ -1,9 +1,9 @@
 // https://vitepress.dev/guide/custom-theme
 import { h, watch } from 'vue'
 import Theme from 'vitepress/theme'
+import naive from 'naive-ui'
 import UnoCSSLayout from './UnoCSSLayout.vue'
 import NaiveTheme from './components/NaiveTheme.vue'
-import naive from "naive-ui";
 
 import './rainbow.css'
 import './vars.css'
@@ -17,9 +17,9 @@ export default {
   Layout: () => {
     return h(UnoCSSLayout)
   },
-  enhanceApp({ router,app }) {
-    app.use(naive);
-    app.component("naive-theme", NaiveTheme);
+  enhanceApp({ router, app }) {
+    app.use(naive)
+    app.component('naive-theme', NaiveTheme)
     if (typeof window === 'undefined')
       return
 

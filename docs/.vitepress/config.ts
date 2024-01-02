@@ -1,33 +1,34 @@
-import fg from "fast-glob";
-import { defineConfig } from "vitepress";
-import type { DefaultTheme } from "vitepress/types";
-// import { version } from '../../package.json'
-const version = "0.0.1";
+import fg from 'fast-glob'
+import { defineConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress/types'
 
-const ogUrl = "https://unocss.dev/";
-const ogImage = `${ogUrl}og.png#1`;
-const title = "@iceywu/utils";
-const description = "nothing to use 🧪";
+// import { version } from '../../package.json'
+const version = '0.0.1'
+
+const ogUrl = 'https://unocss.dev/'
+const ogImage = `${ogUrl}og.png#1`
+const title = '@iceywu/utils'
+const description = 'nothing to use 🧪'
 
 // 指定hooks顺序
 export const hooks = [
-  "useECharts",
-  "useDraggable",
-  "useWatermark",
-  "useDark",
-  "useScrollTo",
-  "useLoader",
-  "useCopyToClipboard",
-  "useGlobal",
-];
+  'useECharts',
+  'useDraggable',
+  'useWatermark',
+  'useDark',
+  'useScrollTo',
+  'useLoader',
+  'useCopyToClipboard',
+  'useGlobal',
+]
 // sortHooks(getItems("hooks"))
 console.log(
   '🎉-----sortHooks(getItems("hooks"))-----',
-  sortHooks(getItems("hooks"))
-);
+  sortHooks(getItems('hooks')),
+)
 
 function getItems(path: string) {
-  const links: DefaultTheme.SidebarItem[] = [];
+  const links: DefaultTheme.SidebarItem[] = []
   fg.sync(`${path}/*`, {
     onlyDirectories: true,
     objectMode: true,
@@ -35,126 +36,126 @@ function getItems(path: string) {
     links.push({
       text: name,
       link: `/${path}/${name}/${name}`,
-    });
-  });
-  return links;
+    })
+  })
+  return links
 }
 
 function sortHooks(list: DefaultTheme.SidebarItem[]) {
-  console.log("🐠------------------------------>");
+  console.log('🐠------------------------------>')
   return hooks
     .map((hook) => {
       return list.map((l) => {
-        return hook === l.text ? l : "";
-      });
+        return hook === l.text ? l : ''
+      })
     })
     .flat()
-    .filter(Boolean);
+    .filter(Boolean)
 }
 
 const Start: DefaultTheme.NavItemWithLink[] = [
-  { text: "快速开始", link: "/guide/guide" },
-];
+  { text: '快速开始', link: '/guide/guide' },
+]
 const Hooks: DefaultTheme.NavItemWithLink[] = [
   // { text: "useDark", link: "/hooks/" },
   {
-    text: "Overview",
-    link: "/integrations/",
+    text: 'Overview',
+    link: '/integrations/',
   },
   {
-    text: "Examples",
-    link: "/integrations/#examples",
+    text: 'Examples',
+    link: '/integrations/#examples',
   },
   {
-    text: "useDark",
-    link: "/hooks/useDark/",
+    text: 'useDark',
+    link: '/hooks/useDark/',
   },
-];
+]
 const Guides: DefaultTheme.NavItemWithLink[] = [
-  { text: "Getting Started", link: "/guide/" },
-  { text: "Why @iceywu/utils?", link: "/guide/why" },
-  { text: "Utils", link: "/utils/" },
-];
+  { text: 'Getting Started', link: '/guide/' },
+  { text: 'Why @iceywu/utils?', link: '/guide/why' },
+  { text: 'Utils', link: '/utils/' },
+]
 
 const Nav: DefaultTheme.NavItem[] = [
   {
-    text: "Guide",
+    text: 'Guide',
     items: [
       {
-        text: "Guide",
+        text: 'Guide',
         items: Guides,
       },
     ],
-    activeMatch: "^/guide/",
+    activeMatch: '^/guide/',
   },
 
-  { text: "Playground", link: "/play/", target: "_blank" },
+  { text: 'Playground', link: '/play/', target: '_blank' },
   {
     text: `v${version}`,
     items: [
       {
-        text: "Release Notes",
-        link: "https://github.com/IceyWu/utils/releases",
+        text: 'Release Notes',
+        link: 'https://github.com/IceyWu/utils/releases',
       },
       {
-        text: "Contributing",
-        link: "https://github.com/IceyWu/utils/blob/main/CONTRIBUTING.md",
+        text: 'Contributing',
+        link: 'https://github.com/IceyWu/utils/blob/main/CONTRIBUTING.md',
       },
     ],
   },
-];
+]
 
 const SidebarGuide: DefaultTheme.SidebarItem[] = [
   {
-    text: "介绍",
+    text: '介绍',
     items: Start,
   },
   {
-    text: `Hooks（${getItems("hooks").length}）`,
+    text: `Hooks（${getItems('hooks').length}）`,
     // items: Hooks,
-    items: sortHooks(getItems("hooks")),
+    items: sortHooks(getItems('hooks')),
   },
   {
-    text: `Utils（${getItems("utils").length}）`,
+    text: `Utils（${getItems('utils').length}）`,
 
-    items: getItems("utils"),
+    items: getItems('utils'),
   },
-];
+]
 
 export default defineConfig({
-  lang: "en-US",
+  lang: 'en-US',
   title,
   titleTemplate: title,
   description,
-  outDir: "./dist",
+  outDir: './dist',
   head: [
-    ["link", { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
+    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     [
-      "link",
+      'link',
       {
-        rel: "alternate icon",
-        href: "/favicon.ico",
-        type: "image/png",
-        sizes: "16x16",
+        rel: 'alternate icon',
+        href: '/favicon.ico',
+        type: 'image/png',
+        sizes: '16x16',
       },
     ],
-    ["meta", { name: "author", content: "Anthony Fu" }],
-    ["meta", { property: "og:type", content: "website" }],
-    ["meta", { name: "og:title", content: title }],
-    ["meta", { name: "og:description", content: description }],
-    ["meta", { property: "og:image", content: ogImage }],
-    ["meta", { name: "twitter:title", content: title }],
-    ["meta", { name: "twitter:card", content: "summary_large_image" }],
-    ["meta", { name: "twitter:image", content: ogImage }],
-    ["meta", { name: "twitter:site", content: "@antfu7" }],
-    ["meta", { name: "twitter:url", content: ogUrl }],
+    ['meta', { name: 'author', content: 'Anthony Fu' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { name: 'og:title', content: title }],
+    ['meta', { name: 'og:description', content: description }],
+    ['meta', { property: 'og:image', content: ogImage }],
+    ['meta', { name: 'twitter:title', content: title }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:image', content: ogImage }],
+    ['meta', { name: 'twitter:site', content: '@antfu7' }],
+    ['meta', { name: 'twitter:url', content: ogUrl }],
     [
-      "link",
+      'link',
       {
-        rel: "search",
-        type: "application/opensearchdescription+xml",
-        href: "/search.xml",
-        title: "@iceywu/utils",
+        rel: 'search',
+        type: 'application/opensearchdescription+xml',
+        href: '/search.xml',
+        title: '@iceywu/utils',
       },
     ],
   ],
@@ -164,39 +165,39 @@ export default defineConfig({
 
   markdown: {
     theme: {
-      light: "vitesse-light",
-      dark: "vitesse-dark",
+      light: 'vitesse-light',
+      dark: 'vitesse-dark',
     },
   },
 
   themeConfig: {
-    logo: "/logo.svg",
+    logo: '/logo.svg',
     nav: Nav,
     search: {
-      provider: "local",
+      provider: 'local',
     },
     sidebar: {
-      "/guide/": SidebarGuide,
+      '/guide/': SidebarGuide,
       // "/integrations/": SidebarGuide,
-      "/hooks/": SidebarGuide,
-      "/utils/": SidebarGuide,
+      '/hooks/': SidebarGuide,
+      '/utils/': SidebarGuide,
     },
     editLink: {
-      pattern: "https://github.com/IceyWu/utils/edit/main/docs/:path",
-      text: "Suggest changes to this page",
+      pattern: 'https://github.com/IceyWu/utils/edit/main/docs/:path',
+      text: 'Suggest changes to this page',
     },
     socialLinks: [
-      { icon: "github", link: "https://github.com/IceyWu/utils" },
-      { icon: "discord", link: "https://github.com/IceyWu" },
+      { icon: 'github', link: 'https://github.com/IceyWu/utils' },
+      { icon: 'discord', link: 'https://github.com/IceyWu' },
     ],
     footer: {
-      message: "Released under the MIT License.",
-      copyright: "Copyright © 2023-PRESENT Icey wu",
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2023-PRESENT Icey wu',
     },
   },
   vite: {
     server: {
-      host: "0.0.0.0",
+      host: '0.0.0.0',
     },
   },
-});
+})
