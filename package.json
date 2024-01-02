@@ -46,7 +46,6 @@
     "play": "npm -C play run dev"
   },
   "dependencies": {
-    "@vueuse/core": "^10.7.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
@@ -59,6 +58,7 @@
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",
     "@types/throttle-debounce": "^5.0.2",
+    "@vueuse/shared": "^10.7.1",
     "bumpp": "^9.2.1",
     "conventional-changelog": "^5.1.0",
     "conventional-changelog-cli": "^4.1.0",

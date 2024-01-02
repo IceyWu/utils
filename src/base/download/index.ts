@@ -1,4 +1,4 @@
-import { createEventHook } from '@vueuse/core'
+import { createEventHook } from '@vueuse/shared'
 
 export interface DownloadFileReturn {
   onSuccess: any
