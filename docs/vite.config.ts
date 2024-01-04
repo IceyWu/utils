@@ -3,6 +3,7 @@ import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 
 export default defineConfig({
+  base: './',
   optimizeDeps: {
     exclude: [
       'vitepress',
