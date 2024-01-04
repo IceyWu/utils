@@ -113,7 +113,7 @@ const SidebarGuide: DefaultTheme.SidebarItem[] = [
   {
     text: `Hooks（${getItems('hooks').length}）`,
     // items: Hooks,
-    items: sortHooks(getItems('hooks')),
+    items: sortHooks(getItems('hooks')) as DefaultTheme.SidebarItem[],
   },
   {
     text: `Utils（${getItems('utils').length}）`,

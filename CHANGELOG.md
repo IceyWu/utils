@@ -1,9 +1,10 @@
-## <small>0.0.34 (2024-01-02)</small>
+## <small>0.0.35 (2024-01-02)</small>
 
 * feat: add docs ([9a85a56](https://github.com/iceywu/utils/commit/9a85a56))
 * feat: add func ([cc2f8c2](https://github.com/iceywu/utils/commit/cc2f8c2))
 * feat: add to func ([d03ca7c](https://github.com/iceywu/utils/commit/d03ca7c))
 * fix: [compareObjects] 调整实现逻辑 ([fb5230c](https://github.com/iceywu/utils/commit/fb5230c))
+* fix: [downloadFile] 修复type异常 ([e0323bd](https://github.com/iceywu/utils/commit/e0323bd))
 
 
 
