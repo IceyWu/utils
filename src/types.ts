@@ -23,36 +23,87 @@ export type Fn<T = void> = () => T
  */
 export type Constructor<T = void> = new (...args: any[]) => T
 
-/**
- * Infers the element type of an array
- */
-export type ElementOf<T> = T extends (infer E)[] ? E : never
+export type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]> }
 
-/**
- * Defines an intersection type of all union items.
- *
- * @param U Union of any types that will be intersected.
- * @returns U items intersected
- * @see https://stackoverflow.com/a/50375286/9259330
- */
-export type UnionToIntersection<U> = (U extends unknown ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
+export type EventsMap = Record<string, any>
 
-/**
- * Infers the arguments type of a function
- */
-export type ArgumentsType<T> = T extends ((...args: infer A) => any) ? A : never
+export interface DefaultEvents extends EventsMap {
+  [event: string]: (...args: any) => void
+}
 
-export type MergeInsertions<T> =
-  T extends object
-    ? { [K in keyof T]: MergeInsertions<T[K]> }
-    : T
+export interface Unsubscribe {
+  (): void
+}
 
-export type DeepMerge<F, S> = MergeInsertions<{
-  [K in keyof F | keyof S]: K extends keyof S & keyof F
-    ? DeepMerge<F[K], S[K]>
-    : K extends keyof S
-      ? S[K]
-      : K extends keyof F
-        ? F[K]
-        : never;
-}>
+export declare class Emitter<Events extends EventsMap = DefaultEvents> {
+  /**
+   * Event names in keys and arrays with listeners in values.
+   *
+   * ```js
+   * emitter1.events = emitter2.events
+   * emitter2.events = { }
+   * ```
+   */
+  events: Partial<{ [E in keyof Events]: Events[E][] }>
+
+  /**
+   * Add a listener for a given event.
+   *
+   * ```js
+   * const unbind = ee.on('tick', (tickType, tickDuration) => {
+   *   count += 1
+   * })
+   *
+   * disable () {
+   *   unbind()
+   * }
+   * ```
+   *
+   * @param event The event name.
+   * @param cb The listener function.
+   * @returns Unbind listener from event.
+   */
+  on<K extends keyof Events>(this: this, event: K, cb: Events[K]): Unsubscribe
+
+  /**
+   * Remove a listener for a given event.
+   *
+   * ```js
+   * ee.off('tick', listener)
+   * ```
+   *
+   * @param event The event name.
+   * @param cb The listener function.
+   */
+  off<K extends keyof Events>(this: this, event: K, cb: Events[K]): void
+
+  /**
+   * Add a one-time listener for a given event.
+   *
+   * ```js
+   * ee.once('tick', (tickType, tickDuration) => {
+   *   count += 1
+   * })
+   * ```
+   *
+   * @param event The event name.
+   * @param cb The listener function.
+   */
+  once<K extends keyof Events>(this: this, event: K, cb: Events[K]): void
+
+  /**
+   * Calls each of the listeners registered for a given event.
+   *
+   * ```js
+   * ee.emit('tick', tickType, tickDuration)
+   * ```
+   *
+   * @param event The event name.
+   * @param args The arguments for listeners.
+   */
+  emit<K extends keyof Events>(
+    this: this,
+    event: K,
+    ...args: Parameters<Events[K]>
+  ): void
+}

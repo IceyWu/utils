@@ -22,7 +22,7 @@ export function getObjVal(data: any, path: string | string[]) {
  * @param obj 对象
  * @returns { obj } obj:去除空值后的对象
  */
-export function removeEmptyValues(obj: any) {
+export function removeEmptyValues2(obj: any) {
   if (typeof obj !== 'object')
     return obj
 
@@ -34,7 +34,7 @@ export function removeEmptyValues(obj: any) {
   Object.entries(obj).forEach(([key, value]) => {
     const val: any = value
     if (val !== null && val !== undefined && val?.length !== 0)
-      result[key] = removeEmptyValues(val)
+      result[key] = removeEmptyValues2(val)
   })
 
   return result
