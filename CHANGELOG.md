@@ -1,3 +1,10 @@
+## <small>0.0.36 (2024-01-15)</small>
+
+* feat: add new utils func ([2682c9a](https://github.com/iceywu/utils/commit/2682c9a))
+* fix: lint check ([4482af3](https://github.com/iceywu/utils/commit/4482af3))
+
+
+
 ## <small>0.0.35 (2024-01-02)</small>
 
 * feat: add docs ([9a85a56](https://github.com/iceywu/utils/commit/9a85a56))
