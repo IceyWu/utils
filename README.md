@@ -1,11 +1,23 @@
-# @iceywu/utils
+<p align="center">
+<a href="https://github.com/vueuse/vueuse#gh-light-mode-only">
+  <img src="http://nest-js.oss-accelerate.aliyuncs.com/nestTest/noId/logo.svg" alt="Collection of common and useful JavaScript / TypeScript utilities" width="300">
+</a>
+
+<br>
+<h1 align="center">@iceywu/utils</h1>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/@iceywu/utils" target="__blank"><img src="https://img.shields.io/npm/v/@iceywu/utils?color=a1b858&label=" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/@iceywu/utils" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@iceywu/utils?color=50a36f&label="></a>
+Collection of common and useful JavaScript / TypeScript utilities by <a href="https://github.com/IceyWu">@IceyWu</a>.
 </p>
 
-## Nothing to use 🧪
+<p align="center">
+  <a href="https://www.npmjs.com/package/@iceywu/utils">
+    <img src="https://img.shields.io/npm/v/@iceywu/utils?color=a1b858&label=" alt="NPM version">
+  </a>
+  <a href="https://www.paka.dev/npm/@iceywu/utils">
+    <img src="https://www.paka.dev/badges/v0/cute.svg" alt="NPM version">
+  </a>
+</p>
 
 ## 📦 Installation
 
@@ -24,5 +36,6 @@ yarn add @iceywu/utils
 import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
 ```
 
-**Docs** | [文档](./docsT/base.md)
-**Docs2** | [文档2](./docsT/base-lite.md)
+## 📚 Documentation
+
+- [Docs](https://www.paka.dev/npm/@iceywu/utils/)
