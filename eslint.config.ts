@@ -5,9 +5,10 @@ export default antfu({
     typescript: {
       'ts/ban-ts-comment': 'off',
       'ts/prefer-ts-expect-error': 'off',
+      'ts/consistent-indexed-object-style': 'off',
     },
   },
 
-  ignores: ['play/', 'docsT/', 'docs/'],
+  ignores: ['play/'],
 
 })

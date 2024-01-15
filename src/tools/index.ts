@@ -18,29 +18,6 @@ export function getObjVal(data: any, path: string | string[]) {
 }
 
 /**
- * @description 去除对象中的空值，包括空数组
- * @param obj 对象
- * @returns { obj } obj:去除空值后的对象
- */
-export function removeEmptyValues2(obj: any) {
-  if (typeof obj !== 'object')
-    return obj
-
-  if (Array.isArray(obj))
-    return obj.filter(item => item !== null && item !== undefined && item.length !== 0)
-
-  const result: any = {}
-
-  Object.entries(obj).forEach(([key, value]) => {
-    const val: any = value
-    if (val !== null && val !== undefined && val?.length !== 0)
-      result[key] = removeEmptyValues2(val)
-  })
-
-  return result
-}
-
-/**
  * @description 获取文件类型
  * @param url 文件地址
  * @returns { image, video, pdf, document, audio, zip, excel, ppt, code, executable, presentation, other }
