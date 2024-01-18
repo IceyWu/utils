@@ -1,7 +1,6 @@
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 import type { DeepPartial } from '../types'
 
-
 /**
  * A deep clone method to ensure that circular references are avoided.
  * 一个深度克隆方法来保证避免循环引用

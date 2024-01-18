@@ -1,17 +1,22 @@
-## <small>0.0.36 (2024-01-15)</small>
+## <small>0.0.36 (2024-1-15)</small>
 
 * feat: add new utils func ([2682c9a](https://github.com/iceywu/utils/commit/2682c9a))
 * fix: lint check ([4482af3](https://github.com/iceywu/utils/commit/4482af3))
 
 
 
-## <small>0.0.35 (2024-01-02)</small>
+## <small>0.0.35 (2024-1-2)</small>
 
 * feat: add docs ([9a85a56](https://github.com/iceywu/utils/commit/9a85a56))
 * feat: add func ([cc2f8c2](https://github.com/iceywu/utils/commit/cc2f8c2))
 * feat: add to func ([d03ca7c](https://github.com/iceywu/utils/commit/d03ca7c))
-* fix: [compareObjects] 调整实现逻辑 ([fb5230c](https://github.com/iceywu/utils/commit/fb5230c))
 * fix: [downloadFile] 修复type异常 ([e0323bd](https://github.com/iceywu/utils/commit/e0323bd))
+
+
+
+## <small>0.0.34 (2023-12-25)</small>
+
+* fix: [compareObjects] 调整实现逻辑 ([fb5230c](https://github.com/iceywu/utils/commit/fb5230c))
 
 
 
