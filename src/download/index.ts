@@ -12,7 +12,12 @@ export interface RequestHeader {
 export interface DownloadFileOptions {
   header: RequestHeader[] | undefined
 }
-
+/**
+ * @param blob file blob(文件blob)
+ * @fileName file name(文件名)
+ * @return void
+ * @description create download file(创建下载文件)
+ */
 export function createDownload(blob: Blob, fileName: string) {
   if (!blob || !fileName)
     return
@@ -30,6 +35,13 @@ export function createDownload(blob: Blob, fileName: string) {
   document.body.removeChild(element)
 }
 
+/**
+ * @description download file from url(下载文件)
+ * @param url file url(文件地址)
+ * @param fileName file name(文件名)
+ * @param option request header(请求头)
+ * @returns { onSuccess, onProcess, onError, stop } onSuccess:下载成功 onProcess:下载进度 onError:下载失败 stop:停止下载
+ */
 export function downloadFile(url: string, fileName: string, option?: DownloadFileOptions): DownloadFileReturn {
   const xhr = new XMLHttpRequest() as any
   const { header } = option || {}

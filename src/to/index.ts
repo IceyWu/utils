@@ -1,7 +1,8 @@
 /**
+ * @description promise error catch(捕获promise错误)
  * @param { Promise } promise
  * @param {object=} errorExt - Additional Information you can pass to the err object
- * @return { Promise }
+ * @return { [Error, undefined] | [null, T] } [error, data]
  */
 export function to<T, U = Error>(
   promise: Promise<T>,

@@ -5,9 +5,9 @@ import toPairs from 'lodash/toPairs'
 import isEqualWith from 'lodash/isEqualWith'
 
 /**
- * Sorts an object by its keys
- * @param obj Object to sort
- * @returns Sorted object
+ * @description Sorts an object by its keys(对象排序)
+ * @param obj Object to sort(需要排序的对象)
+ * @returns { sortedObj } sortedObj:排序后的对象
  */
 export function sortObj(obj: Record<string, any>): Record<string, any> {
   const sortedObj = fromPairs(sortBy(toPairs(obj), ([key]: [string, any]) => key))
@@ -15,9 +15,9 @@ export function sortObj(obj: Record<string, any>): Record<string, any> {
 }
 
 /**
- * 深拷贝
- * @param data
- * @returns deep clone value
+ * @description deep clone value(深拷贝)
+ * @param data value
+ * @returns { data } data:深拷贝后的值
  */
 export function deepClone(data: Record<string, any>): Record<string, any> {
   return cloneDeep(data)

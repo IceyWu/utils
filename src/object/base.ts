@@ -1,27 +1,6 @@
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 import type { DeepPartial } from '../types'
 
-/**
- * A simple deep clone method
- * 一个普通的深度克隆函数
- *
- * @category Object
- *
- * @param origin any complex type of object
- * @returns a deep clone object
- */
-// export function deepClone(origin: unknown): unknown {
-//   if (isArray(origin))
-//     return origin.map(child => deepClone(child))
-
-//   if (isObject(origin)) {
-//     return Object.fromEntries(
-//       Object.entries(origin).map(([k, v]) => [k, deepClone(v)]),
-//     )
-//   }
-
-//   return origin
-// }
 
 /**
  * A deep clone method to ensure that circular references are avoided.
