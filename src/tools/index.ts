@@ -1,4 +1,3 @@
-
 /**
  * @description 获取文件类型
  * @param url 文件地址
