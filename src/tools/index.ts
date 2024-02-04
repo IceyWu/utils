@@ -1,21 +1,3 @@
-/**
- * @description 获取对象属性
- * @param data 对象
- * @param path 属性路径 支持数组 ['a', 'b', 'c'] 或字符串 'a'
- * @returns { any } any:属性值
- */
-export function getObjVal(data: any, path: string | string[]) {
-  if (Array.isArray(path)) {
-    let tempData = data
-    for (const key of path) {
-      if (tempData[key] === undefined)
-        return undefined
-      tempData = tempData[key]
-    }
-    return tempData
-  }
-  return data[path]
-}
 
 /**
  * @description 获取文件类型

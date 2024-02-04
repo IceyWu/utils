@@ -1,3 +1,5 @@
+import get from 'lodash/get'
+import set from 'lodash/set'
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 import type { DeepPartial } from '../types'
 
@@ -84,6 +86,48 @@ export function deepMerge<T>(original: T, patch: DeepPartial<T>): T {
 }
 
 /**
+ * Check if an object has a key
+ * 检查对象是否有某个键
+ * @param obj 对象
+ * @param keys 键
+ * @returns boolean
+ */
+export function hasKey(obj: any, keys: string | string[]): boolean {
+  if (Array.isArray(keys)) {
+    let temp = obj
+    for (let i = 0; i < keys.length; i++) {
+      if (hasOwn(temp, keys[i]))
+        temp = temp[keys[i]]
+      else
+        return false
+    }
+    return true
+  }
+  else {
+    return hasOwn(obj, keys)
+  }
+}
+/**
+ * Set object value
+ * 对象复值
+ * @param obj 对象
+ * @param keys 键
+ * @returns Object
+ */
+export function setObjValue(obj: any, keys: string | string[], value: any): any {
+  return set(obj, keys, value)
+}
+/**
+ * @description 获取对象属性
+ * @param data 对象
+ * @param path 属性路径 支持数组 ['a', 'b', 'c'] 或字符串 'a'
+ * @returns { any } any:属性值
+ */
+export function getObjVal(data: any, path: string | string[]) {
+  return get(data, path)
+}
+
+/**
  * Remove empty values from objects, including empty arrays
  * 去除对象中的空值，包括空数组
  *
@@ -91,20 +135,32 @@ export function deepMerge<T>(original: T, patch: DeepPartial<T>): T {
  * @param exclude 排除的字段
  * @returns merged object
  */
-export function removeEmptyValues(obj: any, exclude: string[] = []) {
+export interface excludeOptions {
+  vals?: any[]
+  keys?: string[]
+}
+export function removeEmptyValues(obj: any, exclude: excludeOptions) {
   if (typeof obj !== 'object')
     return obj
-
   if (Array.isArray(obj))
     return obj.filter(item => !isEmpty(item))
-
   const result: any = {}
-
+  const { vals = [], keys = [] } = exclude
   Object.entries(obj).forEach(([key, value]) => {
     const val: any = value
-    if (!isEmpty(val) && !exclude.includes(key))
-      result[key] = removeEmptyValues(val)
+    if (vals.includes(value))
+      result[key] = val
+    else
+      if (!isEmpty(val))
+        result[key] = removeEmptyValues(val, exclude)
   })
+  for (let i = 0; i < keys.length; i++) {
+    const k = keys[i]
+    if (hasKey(obj, k)) {
+      const valT = getObjVal(obj, k)
+      setObjValue(result, k, valT)
+    }
+  }
 
   return result
 }
@@ -116,4 +172,7 @@ export default {
   extend,
   hasOwn,
   removeEmptyValues,
+  hasKey,
+  setObjValue,
+  getObjVal,
 }

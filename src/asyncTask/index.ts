@@ -1,5 +1,5 @@
 import type { Awaitable } from '../types'
-import { getObjVal } from '../tools'
+import { getObjVal } from '../object'
 
 interface Rules {
   keys: string | string[]
