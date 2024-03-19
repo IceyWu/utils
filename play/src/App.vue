@@ -10,61 +10,31 @@
   </div>
 </template>
 <script setup lang="ts">
-import { downloadFile,getAsyncTask,hasKey,setObjValue, removeEmptyValues,getFileType,formatNumber ,randomString,debounce,throttle,sortObj,deepClone} from "../../src";
+import { list } from "../../src";
 
-onMounted( () => {
-  
+onMounted(() => {
+
 });
 
 
-const download  = () => {
-  const fileUrl = 'http://nest-js.oss-accelerate.aliyuncs.com/nestTest/noId/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20231206132229.jpg'
-  const fileName = 'test.jpg'
-  const {onProcess,onSuccess,stop} =  downloadFile(fileUrl,fileName)
-  onProcess((e:any) => {
-    console.log('🐬-----onprocess-----', e);
-  })
-  onSuccess((e:any) => {
-    console.log('🐬-----onSuccess-----', e);
-  })
+const download = () => {
+  const fileUrl = 'https://www.douyin.com/aweme/v1/play/?video_id=v0200fg10000cnkpuf3c77u23t3ih4t0&line=0&file_id=70959f5972454016b94de0e1809adc31&sign=7227007acaae56f6652ae98985e3e561&is_play_url=1&source=PackSourceEnum_AWEME_DETAIL'
+  const fileName = 'test.mp4'
+
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = fileName;
+  link.target = "_blank"; // 可选，如果希望在新窗口中下载文件，请取消注释此行
+  link.click();
+
 }
 const removeEmptyValuesFunc = () => {
-  const obj = {
-    a: 1,
-    b: 2,
-    c: '',
-    d: null,
-    e: undefined,
-    f: 0,
-    g: '0',
-    h: ' ',
-    i: '  ',
-    ttVal:{
-      a: 1,
-      b: 2,
-      c: '',
-      d: null,
-      e: undefined,
-      f: 0,
-      g: '0',
-      h: ' ',
-      i: '  ',
-    },
-    aaaa: null
-  }
-  const exclude = {
-    // vals:[null],
-    // keys:[['ttVal','e']]
-    keys:[["e"]]
-  }
-  const ttVal = null
-  const testSet = {}
-  const res = removeEmptyValues(obj,exclude)
-  console.log('🌈-----oldval-----', obj);
-  console.log('🌈-----removeEmptyValuesFunc-----', res);
-  // console.log('🦄------------------------------>',hasKey(obj,['ttVal','a']),hasKey(obj,['ttVal','aaaa']));
-  // console.log('🎉-----setObjValue-----', setObjValue(testSet,["a","b"],1212));
+ 
 };
+onMounted(()=>{
+  const newList = list(0,10,'a')
+ console.log('🍪-----newList-----', newList);
+})
 
 
 

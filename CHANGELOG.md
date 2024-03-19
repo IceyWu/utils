@@ -1,3 +1,27 @@
+## v0.0.38
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.37...v0.0.38)
+
+### 🚀 Enhancements
+
+- [Array] add diff, flat, list, sift,range func ([289e2e4](https://github.com/iceywu/utils/commit/289e2e4))
+- [Async] add sleep,all func ([5ca5504](https://github.com/iceywu/utils/commit/5ca5504))
+
+### 🩹 Fixes
+
+- Refactor getObjVal and removeEmptyValues,Add hasKey and setObjValue ([5bf3b39](https://github.com/iceywu/utils/commit/5bf3b39))
+- [download] fix option header error ([1b79992](https://github.com/iceywu/utils/commit/1b79992))
+- Delete log ([09a2a2a](https://github.com/iceywu/utils/commit/09a2a2a))
+
+### 🏡 Chore
+
+- Update deps ([4976985](https://github.com/iceywu/utils/commit/4976985))
+- Lint fix ([bfdcaab](https://github.com/iceywu/utils/commit/bfdcaab))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## <small>0.0.36 (2024-1-15)</small>
 
 * feat: add new utils func ([2682c9a](https://github.com/iceywu/utils/commit/2682c9a))
