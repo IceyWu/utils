@@ -2,7 +2,8 @@ import { isFunction } from '../is'
 
 /**
  * @description 返回数组不同的值
- * @param array (Array): 要检查的数组。
+ * @param root (Array): 要检查的数组1。
+ * @param other (Array): 要检查的数组2。
  * @returns [values] (...Array): 排除的值。
  */
 export function diff<T>(root: readonly T[], other: readonly T[], identity: (item: T) => string | number | symbol = (t: T) =>
