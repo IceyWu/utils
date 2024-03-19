@@ -44,13 +44,6 @@ export function createDownload(blob: Blob, fileName: string) {
  */
 export function downloadFile(url: string, fileName: string, option?: DownloadFileOptions): DownloadFileReturn {
   const xhr = new XMLHttpRequest() as any
-  const { header } = option || {}
-  if (header) {
-    Object.keys(header).forEach((key: string) => {
-      xhr.setRequestHeader(key, header[key as keyof typeof header])
-    })
-  }
-
   const onsuccess = createEventHook<any>()
   const onprocess = createEventHook<any>()
   const onerror = createEventHook<any>()
@@ -58,6 +51,12 @@ export function downloadFile(url: string, fileName: string, option?: DownloadFil
     xhr.abort()
   }
   xhr.open('GET', url, true)
+  const { header } = option || {}
+  if (header) {
+    Object.keys(header).forEach((key: string) => {
+      xhr.setRequestHeader(key, header[key as keyof typeof header])
+    })
+  }
   xhr.responseType = 'blob'
   xhr.send()
   xhr.onload = function () {
