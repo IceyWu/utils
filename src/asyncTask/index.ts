@@ -1,5 +1,6 @@
 import type { Awaitable } from '../types'
 import { getObjVal } from '../object'
+import { isArray } from '../is'
 
 interface Rules {
   keys: string | string[]
@@ -54,4 +55,78 @@ export function getAsyncTask(request: Awaitable<any>, option: GetAsyncTaskOption
       stopFlag = true
     },
   }
+}
+
+type PromiseValues<T extends Promise<any>[]> = {
+  [K in keyof T]: T[K] extends Promise<infer U> ? U : never
+}
+export class AggregateError extends Error {
+  errors: Error[]
+  constructor(errors: Error[] = []) {
+    super()
+    const name = errors.find(e => e.name)?.name ?? ''
+    this.name = `AggregateError(${name}...)`
+    this.message = `AggregateError with ${errors.length} errors`
+    this.stack = errors.find(e => e.stack)?.stack ?? this.stack
+    this.errors = errors
+  }
+}
+/**
+ * Functionally similar to Promise.all or Promise.allSettled. If any
+ * errors are thrown, all errors are gathered and thrown in an
+ * AggregateError.
+ * @description like Promise.all or Promise.allSettled functions
+ * @param promises promise 列表
+ * @returns res
+ * @example
+ * const { user } = await all({
+ *   user: api.users.create(...),
+ *   bucket: s3.buckets.create(...),
+ *   message: slack.customerSuccessChannel.sendMessage(...)
+ * })
+ */
+export async function all<T extends Record<string, Promise<any>>>(
+  promises: T
+): Promise<{ [K in keyof T]: Awaited<T[K]> }>
+export async function all<
+  T extends Record<string, Promise<any>> | Promise<any>[],
+>(promises: T) {
+  const entries = isArray(promises)
+    ? promises.map(p => [null, p] as [null, Promise<any>])
+    : Object.entries(promises)
+
+  const results = await Promise.all(
+    entries.map(([key, value]) =>
+      value
+        .then(result => ({ result, exc: null, key }))
+        .catch(exc => ({ result: null, exc, key })),
+    ),
+  )
+
+  const exceptions = results.filter(r => r.exc)
+  if (exceptions.length > 0)
+    throw new AggregateError(exceptions.map(e => e.exc))
+
+  if (isArray(promises)) {
+    return results.map(r => r.result) as T extends Promise<any>[]
+      ? PromiseValues<T>
+      : unknown
+  }
+
+  return results.reduce(
+    (acc, item) => ({
+      ...acc,
+      [item.key!]: item.result,
+    }),
+    {} as { [K in keyof T]: Awaited<T[K]> },
+  )
+}
+
+/**
+ * @description Async wait（异步等待）
+ * @param milliseconds 等待时间
+ * @returns Promise
+ */
+export function sleep(milliseconds: number) {
+  return new Promise(res => setTimeout(res, milliseconds))
 }
