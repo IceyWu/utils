@@ -75,7 +75,7 @@ export function* range<T = number>(
 ): Generator<T> {
   const mapper = isFunction(valueOrMapper) ? valueOrMapper : () => valueOrMapper
   const start = end ? startOrLength : 0
-  const final = end ?? startOrLength
+  const final = end || startOrLength
   for (let i = start; i <= final; i += step) {
     yield mapper(i)
     if (i + step > final)
@@ -92,5 +92,5 @@ type Falsy = null | undefined | false | '' | 0 | 0n
  * sift(['salmon', null, false, NaN, 'sockeye', 'bass'] ) // => ['salmon', 'sockeye', 'bass']
  */
 export function sift<T>(list: readonly (T | Falsy)[]): T[] {
-  return (list?.filter(x => !!x) as T[]) ?? []
+  return (list?.filter(x => !!x) as T[]) || []
 }
