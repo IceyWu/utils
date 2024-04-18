@@ -10,7 +10,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { list } from "../../src";
+import { list } from "../../dist";
 
 onMounted(() => {
 
