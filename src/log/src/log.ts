@@ -41,9 +41,12 @@ const logFunc = (type = "primary", title: string, ...contents: any[]) => {
     `%c ${title} `,
     `background-image:${bg};color:${color}; padding: 2px; border-radius: 4px;font-size:14px;`
   );
-  contents.forEach((content) => {
-    console.log(content[0]);
-  });
+  for (let index = 0; index < contents.length; index++) {
+    const element = contents[index] as any[];
+    element.forEach((item: string) => {
+      console.log(item);
+    });
+  }
   console.groupEnd();
 };
 
