@@ -52,7 +52,7 @@ const logFunc = (type = "primary", title: string, ...contents: any[]) => {
 
 export const consolePlus = {
   log: (title: string, ...contents: any[]) =>
-    logFunc("default", title, contents),
+    logFunc("primary", title, contents),
   error: (title: string, ...contents: any[]) =>
     logFunc("danger", title, contents),
   warn: (title: string, ...contents: any[]) =>
