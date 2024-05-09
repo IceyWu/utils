@@ -26,8 +26,7 @@ export function deepClone2(origin: any, hash = new WeakMap()): any {
         target[k] = new RegExp(v)
       else if (isDate(v))
         target[k] = new Date(v)
-      else
-        target[k] = deepClone2(v, hash)
+      else target[k] = deepClone2(v, hash)
     })
     return target
   }
@@ -45,7 +44,10 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * Object.prototype.hasOwnProperty
  * @category Object
  */
-export function hasOwn(val: object, key: string | symbol): key is keyof typeof val {
+export function hasOwn(
+  val: object,
+  key: string | symbol,
+): key is keyof typeof val {
   if (val == null)
     return false
   return hasOwnProperty.call(val, key)
@@ -74,8 +76,7 @@ export function deepMerge<T>(original: T, patch: DeepPartial<T>): T {
       if (isObject(p[key])) {
         if (!(key in o))
           Object.assign(output, { [key]: p[key] })
-        else
-          output[key] = deepMerge(o[key], p[key])
+        else output[key] = deepMerge(o[key], p[key])
       }
       else {
         Object.assign(output, { [key]: p[key] })
@@ -98,8 +99,7 @@ export function hasKey(obj: any, keys: string | string[]): boolean {
     for (let i = 0; i < keys.length; i++) {
       if (hasOwn(temp, keys[i]))
         temp = temp[keys[i]]
-      else
-        return false
+      else return false
     }
     return true
   }
@@ -114,7 +114,11 @@ export function hasKey(obj: any, keys: string | string[]): boolean {
  * @param keys 键
  * @returns Object
  */
-export function setObjValue(obj: any, keys: string | string[], value: any): any {
+export function setObjValue(
+  obj: any,
+  keys: string | string[],
+  value: any,
+): any {
   return set(obj, keys, value)
 }
 /**
@@ -139,20 +143,19 @@ export interface excludeOptions {
   vals?: any[]
   keys?: string[]
 }
-export function removeEmptyValues(obj: any, exclude: excludeOptions) {
+export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
   if (typeof obj !== 'object')
     return obj
   if (Array.isArray(obj))
     return obj.filter(item => !isEmpty(item))
   const result: any = {}
-  const { vals = [], keys = [] } = exclude
+  const { vals = [], keys = [] } = exclude ?? ({} as excludeOptions)
   Object.entries(obj).forEach(([key, value]) => {
     const val: any = value
     if (vals.includes(value))
       result[key] = val
-    else
-      if (!isEmpty(val))
-        result[key] = removeEmptyValues(val, exclude)
+    else if (!isEmpty(val))
+      result[key] = removeEmptyValues(val, exclude)
   })
   for (let i = 0; i < keys.length; i++) {
     const k = keys[i]
