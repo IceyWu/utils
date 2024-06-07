@@ -14,10 +14,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { list, consolePlus } from "../../src";
+import { list, consolePlus, removeEmptyValues } from "../../src";
 
 onMounted(() => {
-  consolePlus.log('warning', 'test')
+  consolePlus.log("warning", "test");
   consolePlus.error("error", "error test", "[Error]: ");
 });
 
@@ -32,7 +32,32 @@ const download = () => {
   link.target = "_blank"; // 可选，如果希望在新窗口中下载文件，请取消注释此行
   link.click();
 };
-const removeEmptyValuesFunc = () => {};
+const removeEmptyValuesFunc = () => {
+  const tempData = {
+    a: 6,
+    b: undefined,
+    c: null,
+    d: "",
+    e: 0,
+    f: false,
+    g: [],
+    h: {},
+    i: () => {},
+    yy: {
+      a: 6,
+      b: undefined,
+      c: null,
+      d: "",
+    },
+  };
+  const emptyOptions = {
+    keys: ["b"],
+    vals: [null],
+  };
+  console.log("🌈-----tempData-----", tempData);
+  const newList = removeEmptyValues(tempData, emptyOptions);
+  console.log("🍪-----newList-----", newList);
+};
 onMounted(() => {
   const newList = list(0, 10, "a");
   console.log("🍪-----newList-----", newList);
