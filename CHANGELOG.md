@@ -2,6 +2,23 @@
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.40...v0.0.41)
 
+### 🚀 Enhancements
+
+- Add removeEmptyValues use demo ([4013d6d](https://github.com/iceywu/utils/commit/4013d6d))
+
+### 🩹 Fixes
+
+- [removeEmptyValues] 修复可选参数使用异常 ([9aae4bd](https://github.com/iceywu/utils/commit/9aae4bd))
+
+### 🏡 Chore
+
+- Update CHANGELOG ([88041f5](https://github.com/iceywu/utils/commit/88041f5))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
+
 ## v0.0.38
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.37...v0.0.38)
