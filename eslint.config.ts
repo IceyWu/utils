@@ -6,6 +6,7 @@ export default antfu({
       'ts/ban-ts-comment': 'off',
       'ts/prefer-ts-expect-error': 'off',
       'ts/consistent-indexed-object-style': 'off',
+      'no-console': 'off',
     },
   },
 

@@ -37,6 +37,7 @@ export function typeColor(type = 'default') {
 
 function logFunc(type = 'primary', title: string, ...contents: any[]) {
   const { color, bg } = typeColor(type)
+
   console.group(
     `%c ${title} `,
     `background-image:${bg};color:${color}; padding: 2px; border-radius: 4px;font-size:14px;`,
@@ -47,6 +48,7 @@ function logFunc(type = 'primary', title: string, ...contents: any[]) {
       console.log(item)
     })
   }
+
   console.groupEnd()
 }
 

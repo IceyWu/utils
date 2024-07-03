@@ -1,10 +1,11 @@
 import { createApp } from 'vue'
-import App from './App.vue'
 import './styles/main.css'
 import 'virtual:uno.css'
 import 'vue-toastification/dist/index.css'
 import Toast from 'vue-toastification'
 import type { PluginOptions } from 'vue-toastification'
+import App from './App.vue'
+
 const toastOptions: PluginOptions = {
   // You can set your default options here
   maxToasts: 3,
