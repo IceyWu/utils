@@ -38,4 +38,4 @@ import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
 
 ## 📚 Documentation
 
-- [Docs](https://www.paka.dev/npm/@iceywu/utils/)
+- [Docs](https://www.jsdocs.io/package/@iceywu/utils)
