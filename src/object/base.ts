@@ -168,6 +168,40 @@ export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
   return result
 }
 
+/**
+ * Remove tree data that matches the specified value
+ * 去除树状数据中指定的数据
+ *
+ * @param treeData 树状数据
+ * @param matchFunction 匹配函数
+ * @returns 去除后的树状数据
+ */
+export function removeTreeData(
+  treeData: any[],
+  matchFunction: (item: any) => boolean,
+) {
+  if (!Array.isArray(treeData) || treeData.length === 0) {
+    return treeData
+  }
+  const result = []
+  for (let i = 0; i < treeData.length; i++) {
+    if (matchFunction(treeData[i])) {
+      continue
+    }
+    if (treeData[i].children && treeData[i].children.length > 0) {
+      const childResult = removeTreeData(treeData[i].children, matchFunction)
+      if (childResult.length > 0) {
+        treeData[i].children = childResult
+        result.push(treeData[i])
+      }
+    }
+    else {
+      result.push(treeData[i])
+    }
+  }
+  return result
+}
+
 export default {
   // deepClone,
   deepClone2,
@@ -178,4 +212,5 @@ export default {
   hasKey,
   setObjValue,
   getObjVal,
+  removeTreeData,
 }
