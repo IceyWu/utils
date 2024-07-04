@@ -7,7 +7,7 @@ interface ValItem {
   valFormat?: any
 }
 
-export async function toPro(promise: Promise<T>, valList?: ValItem[]) {
+export async function toPro<T,U>(promise: Promise<T>, valList?: ValItem[]) {
   const [err, res] = await to(promise)
   if (err)
     return [err, undefined]
