@@ -30,10 +30,10 @@ export interface GetAsyncTaskReturn {
  * // {
  * //  code: 200,
  * //  data: {
- * //	  complete: true
+ * //complete: true
  * //  }
  * // }
- * 	  const rules = [
+ *const rules = [
  *      {
  *         keys: "code",
  *         val: 200,
@@ -45,7 +45,7 @@ export interface GetAsyncTaskReturn {
  *    ];
  *    const params = {};
  *    const { task } = getAsyncTask(asyncTaskApi, { rules, params });
- * 
+ *
  * ```
  */
 export function getAsyncTask(request: Awaitable<any>, option: GetAsyncTaskOptions): GetAsyncTaskReturn {

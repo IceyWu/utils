@@ -14,7 +14,7 @@ Collection of common and useful JavaScript / TypeScript utilities by <a href="ht
   <a href="https://www.npmjs.com/package/@iceywu/utils">
     <img src="https://img.shields.io/npm/v/@iceywu/utils?color=a1b858&label=" alt="NPM version">
   </a>
-  <a href="https://www.paka.dev/npm/@iceywu/utils">
+  <a href="https://www.jsdocs.io/package/@iceywu/utils">
     <img src="https://www.paka.dev/badges/v0/cute.svg" alt="NPM version">
   </a>
 </p>

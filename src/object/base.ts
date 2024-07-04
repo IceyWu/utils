@@ -147,7 +147,7 @@ export function getObjVal(data: any, path: string | string[]) {
  *   c: 10,
  *   b: "",
  *   k: {
- *     a: "",
+ *     a: "qq",
  *     b: null,
  *     c: undefined,
  *   },
@@ -238,10 +238,10 @@ export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
  *
  * ```
  */
-export function removeTreeData(
+export const removeTreeData: any = (
   treeData: any[],
   matchFunction: (item: any) => boolean,
-) {
+) => {
   if (!Array.isArray(treeData) || treeData.length === 0) {
     return treeData
   }
@@ -251,16 +251,16 @@ export function removeTreeData(
       continue
     }
     if (treeData[i].children && treeData[i].children.length > 0) {
-      const childResult = removeTreeData(treeData[i].children, matchFunction)
-      if (childResult.length > 0) {
-        treeData[i].children = childResult
-        result.push(treeData[i])
-      }
+      result.push({
+        ...treeData[i],
+        children: removeTreeData(treeData[i].children, matchFunction),
+      })
     }
     else {
       result.push(treeData[i])
     }
   }
+
   return result
 }
 
