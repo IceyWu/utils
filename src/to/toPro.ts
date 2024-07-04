@@ -7,7 +7,30 @@ interface ValItem {
   valFormat?: any
 }
 
-export async function toPro<T, _any>(promise: Promise<T>, valList?: ValItem[]) {
+
+/**
+ * @description 简化数据请求
+ * @param any value
+ * @returns 获取列表
+ * @category to
+ * @example
+ * ```
+ *  //自定义配置项
+ *   const valList = [
+ *  {
+ *    keys: ["code", "result.content"],
+ *    valFormat: (valList: any) => {
+ *      const [code, content] = valList;
+ *      return code === 0 ? content : [];
+ *    },
+ *  },
+ * ];
+ * const [err, res] = await toPro(testFunc(), valList);
+ * const [dataList, timestamp, code] = res;
+ * 
+ * ```
+ */
+export async function toPro(promise: Promise<T>, valList?: ValItem[]) {
   const [err, res] = await to(promise)
   if (err)
     return [err, undefined]
