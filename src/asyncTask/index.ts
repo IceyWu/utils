@@ -23,6 +23,30 @@ export interface GetAsyncTaskReturn {
  * @param request 请求函数
  * @param option 选项 rules:判断条件 params:请求参数 asyncTime:异步时间 maxTimes:最大次数
  * @returns { task, stop } task:异步任务 stop:停止异步任务
+ * @example
+ * ```
+ * // rules:判断条件
+ * // 1.请求接口放回数据后，判断返回数据中code为200，且data.complete为true
+ * // {
+ * //  code: 200,
+ * //  data: {
+ * //	  complete: true
+ * //  }
+ * // }
+ * 	  const rules = [
+ *      {
+ *         keys: "code",
+ *         val: 200,
+ *      },
+ *      {
+ *         keys: ["data", "complete"],
+ *         val: true,
+ *      }
+ *    ];
+ *    const params = {};
+ *    const { task } = getAsyncTask(asyncTaskApi, { rules, params });
+ * 
+ * ```
  */
 export function getAsyncTask(request: Awaitable<any>, option: GetAsyncTaskOptions): GetAsyncTaskReturn {
   let timer: string | number | NodeJS.Timeout | undefined
