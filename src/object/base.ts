@@ -169,12 +169,48 @@ export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
 }
 
 /**
- * Remove tree data that matches the specified value
+ * Remove `tree data` that matches the specified value
  * 去除树状数据中指定的数据
  *
+ * @category Base
  * @param treeData 树状数据
  * @param matchFunction 匹配函数
- * @returns 去除后的树状数据
+ * @returns Array 处理好的值
+ * @example
+ * ```
+ *const treeData = [
+ *  {
+ *    id: 1,
+ *    name: "A",
+ *    children: [
+ *      {
+ *        id: 2,
+ *        name: "B",
+ *        children: [
+ *          {
+ *            id: 3,
+ *            name: "C",
+ *            children: [],
+ *          },
+ *        ],
+ *      },
+ *      {
+ *        id: 4,
+ *        name: "D",
+ *        children: [],
+ *      },
+ *    ],
+ *  },
+ *  {
+ *    id: 5,
+ *    name: "E",
+ *    children: [],
+ *  },
+ *];
+ *const matchFunction = (item:any) => item.id === 3;
+ *const newTreeData = removeTreeData(treeData, matchFunction);
+ *
+ * ```
  */
 export function removeTreeData(
   treeData: any[],
