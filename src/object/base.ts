@@ -1,6 +1,7 @@
 import get from 'lodash/get'
 import set from 'lodash/set'
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
+import { removeListEmptyVal } from '../array'
 import type { DeepPartial } from '../types'
 
 /**
@@ -170,10 +171,10 @@ export interface excludeOptions {
   keys?: string[]
 }
 export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
-  if (typeof obj !== 'object')
+  if (!isObject(obj))
     return obj
-  if (Array.isArray(obj))
-    return obj.filter(item => !isEmpty(item))
+  if (isArray(obj))
+    return removeListEmptyVal(obj)
   const result: any = {}
   const { vals = [], keys = [] } = exclude ?? ({} as excludeOptions)
   Object.entries(obj).forEach(([key, value]) => {
@@ -182,6 +183,9 @@ export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
       result[key] = val
     else if (!isEmpty(val))
       result[key] = removeEmptyValues(val, exclude)
+    if (isEmpty(result[key]) && !vals.includes(result[key]) && !keys.includes(key)) {
+      delete result[key]
+    }
   })
   for (let i = 0; i < keys.length; i++) {
     const k = keys[i]

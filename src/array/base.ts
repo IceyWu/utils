@@ -1,4 +1,5 @@
 import { isFunction } from '../is'
+import { removeEmptyValues } from '../object'
 
 /**
  * @description 返回数组不同的值
@@ -93,4 +94,30 @@ type Falsy = null | undefined | false | '' | 0 | 0n
  */
 export function sift<T>(list: readonly (T | Falsy)[]): T[] {
   return (list?.filter(x => !!x) as T[]) || []
+}
+
+export interface RemoveListEmptyValOptions {
+  matchFunction?: (item: any) => boolean
+  removeFunction?: (item: any) => boolean
+}
+/**
+ * @description 排除数组（或者树状数据）匹配的值
+ * @param treeList 树状数据
+ * @param removeOptions 处理选项
+ * @returns Array 处理好的值
+ */
+export function removeListEmptyVal<T>(treeList: any[], removeOptions?: RemoveListEmptyValOptions): T[] {
+  const removeFunc = removeOptions?.removeFunction || removeEmptyValues
+  const matchFunc = removeOptions?.removeFunction || (item => item && item.children)
+  if (!Array.isArray(treeList) || treeList.length === 0) {
+    return treeList
+  }
+  for (let i = 0; i < treeList.length; i++) {
+    treeList[i] = removeFunc(treeList[i])
+    const { children } = treeList[i]
+    if (matchFunc(treeList[i])) {
+      treeList[i].children = removeListEmptyVal(children, removeOptions)
+    }
+  }
+  return treeList
 }
