@@ -52,6 +52,20 @@ function logFunc(type = 'primary', title: string, ...contents: any[]) {
   console.groupEnd()
 }
 
+/**
+ * Console Plus
+ * console升级版
+ *
+ * @category Log
+ * @param str 打印的内容
+ * @example
+ * ```
+ *
+ * consolePlus.log("warning", "test");
+ * consolePlus.error("error", "error test", "[Error]: ");
+ *
+ * ```
+ */
 export const consolePlus = {
   log: (title: string, ...contents: any[]) =>
     logFunc('primary', title, contents),
