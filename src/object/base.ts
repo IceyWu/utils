@@ -138,6 +138,32 @@ export function getObjVal(data: any, path: string | string[]) {
  * @param obj 对象
  * @param exclude 排除的字段
  * @returns merged object
+ * @category object
+ * @example
+ * ```
+ *
+ *  const tempData = {
+ *   a: { a: 1, c: 2 },
+ *   c: 10,
+ *   b: "",
+ *   k: {
+ *     a: "",
+ *     b: null,
+ *     c: undefined,
+ *   },
+ *   G: {
+ *     q: {
+ *       o: {
+ *         s: "",
+ *         m: 26,
+ *       },
+ *     },
+ *   },
+ * };
+ *  const newList = removeEmptyValues(tempData);
+ * //  {"a": {"a": 1,"c": 2},"c": 10,"k": {},"G": {"q": {"o": {"m": 26}}}}
+ *
+ * ```
  */
 export interface excludeOptions {
   vals?: any[]
