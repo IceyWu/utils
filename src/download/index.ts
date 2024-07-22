@@ -1,9 +1,7 @@
-import { createEventHook } from '@vueuse/shared'
-
 export interface DownloadFileReturn {
-  onSuccess: any
-  onProcess: any
-  onError: any
+  // onSuccess: any;
+  // onProcess: any;
+  // onError: any;
   stop: () => void
 }
 export interface RequestHeader {
@@ -30,8 +28,7 @@ export function createDownload(blob: Blob, fileName: string) {
   element.click()
   if (window.URL)
     window.URL.revokeObjectURL(url)
-  else
-    window.webkitURL.revokeObjectURL(url)
+  else window.webkitURL.revokeObjectURL(url)
   document.body.removeChild(element)
 }
 
@@ -39,14 +36,22 @@ export function createDownload(blob: Blob, fileName: string) {
  * @description download file from url(下载文件)
  * @param url file url(文件地址)
  * @param fileName file name(文件名)
+ * @param callbackList { onSuccess:下载成功 onProcess:下载进度 onError:下载失败 }
  * @param option request header(请求头)
- * @returns { onSuccess, onProcess, onError, stop } onSuccess:下载成功 onProcess:下载进度 onError:下载失败 stop:停止下载
+ * @returns { stop } stop:停止下载
  */
-export function downloadFile(url: string, fileName: string, option?: DownloadFileOptions): DownloadFileReturn {
+export function downloadFile(
+  url: string,
+  fileName: string,
+  callbackList?: {
+    onSuccess?: (response: any) => void
+    onProcess?: (event: any) => void
+    onError?: (event: any) => void
+  },
+  option?: DownloadFileOptions,
+
+): DownloadFileReturn {
   const xhr = new XMLHttpRequest() as any
-  const onsuccess = createEventHook<any>()
-  const onprocess = createEventHook<any>()
-  const onerror = createEventHook<any>()
   const stop = () => {
     xhr.abort()
   }
@@ -59,22 +64,23 @@ export function downloadFile(url: string, fileName: string, option?: DownloadFil
   }
   xhr.responseType = 'blob'
   xhr.send()
+  const { onSuccess, onProcess, onError } = callbackList || {}
   xhr.onload = function () {
-    if (this.status === 200)
-      onsuccess.trigger(this.response)
-
-    createDownload(this.response, fileName)
+    if (this.status === 200) {
+      onSuccess && onSuccess(this.response)
+      createDownload(this.response, fileName)
+    }
+    else {
+      onError && onError(this)
+    }
   }
   xhr.onprogress = function (e: any) {
-    onprocess.trigger(e)
+    onProcess && onProcess(e)
   }
   xhr.onerror = function (e: any) {
-    onerror.trigger(e)
+    onError && onError(e)
   }
   return {
-    onSuccess: onsuccess.on,
-    onProcess: onprocess.on,
-    onError: onsuccess.on,
     stop,
   }
 }

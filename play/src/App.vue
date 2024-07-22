@@ -15,7 +15,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import { list, consolePlus, removeEmptyValues, toPro, to } from "../../src";
+import {
+  list,
+  consolePlus,
+  removeEmptyValues,
+  toPro,
+  to,
+  downloadFile,
+} from "../../src";
 
 onMounted(() => {
   consolePlus.log("warning", "test");
@@ -24,14 +31,35 @@ onMounted(() => {
 
 const download = () => {
   const fileUrl =
-    "https://www.douyin.com/aweme/v1/play/?video_id=v0200fg10000cnkpuf3c77u23t3ih4t0&line=0&file_id=70959f5972454016b94de0e1809adc31&sign=7227007acaae56f6652ae98985e3e561&is_play_url=1&source=PackSourceEnum_AWEME_DETAIL";
+    "http://nest-js.oss-accelerate.aliyuncs.com/nestDev/_DSC0242.JPG";
   const fileName = "test.mp4";
 
-  const link = document.createElement("a");
-  link.href = fileUrl;
-  link.download = fileName;
-  link.target = "_blank"; // 可选，如果希望在新窗口中下载文件，请取消注释此行
-  link.click();
+  // const link = document.createElement("a");
+  // link.href = fileUrl;
+  // link.download = fileName;
+  // link.target = "_blank"; // 可选，如果希望在新窗口中下载文件，请取消注释此行
+  // link.click();
+  const testD = downloadFile(
+    fileUrl,
+    fileName,
+
+    {
+      onSuccess: (res) => {
+        console.log("🍪-----res-----", res);
+      },
+      onProcess: (progress) => {
+        console.log("🍪-----progress-----", progress);
+      },
+
+      onError: (err) => {
+        console.log("🍪-----err-----", err);
+      },
+    },
+    {},
+
+  );
+  console.log("🍪-----testD-----", testD);
+  // testD();
 };
 const removeEmptyValuesFunc = () => {
   const tempData = {

@@ -7,10 +7,10 @@ interface ValItem {
   valFormat?: any
 }
 
-
 /**
  * @description 简化数据请求
- * @param any value
+ * @param promise 请求
+ * @param valList 自定义配置项
  * @returns 获取列表
  * @category to
  * @example
@@ -27,10 +27,10 @@ interface ValItem {
  * ];
  * const [err, res] = await toPro(testFunc(), valList);
  * const [dataList, timestamp, code] = res;
- * 
+ *
  * ```
  */
-export async function toPro(promise: Promise<T>, valList?: ValItem[]) {
+export async function toPro<T>(promise: Promise<T>, valList?: ValItem[]) {
   const [err, res] = await to(promise)
   if (err)
     return [err, undefined]
