@@ -36,6 +36,25 @@ yarn add @iceywu/utils
 import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
 ```
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>@iceywu/utils Test</h1>
+    <script type="module">
+      import { consolePlus } from "https://fastly.jsdelivr.net/npm/@iceywu/utils@0.0.44/dist/index.mjs";
+      consolePlus.log("print", 666);
+    </script>
+  </body>
+</html>
+
+```
+
 ## 📚 Documentation
 
 - [Docs](https://www.jsdocs.io/package/@iceywu/utils)

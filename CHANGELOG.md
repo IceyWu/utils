@@ -1,3 +1,35 @@
+## v0.0.42
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.41...v0.0.42)
+
+### 🚀 Enhancements
+
+- [toPro] 新增toPro方法 ([d31aa36](https://github.com/iceywu/utils/commit/d31aa36))
+- [removeTreeData] 新增树状数据匹配移除功能 ([5844ff3](https://github.com/iceywu/utils/commit/5844ff3))
+- [toPro] 新增toPro方法并调整CI配置 ([4fde5d9](https://github.com/iceywu/utils/commit/4fde5d9))
+- [removeListEmptyVal] 增加removeListEmptyVal方法 ([5f6fd2f](https://github.com/iceywu/utils/commit/5f6fd2f))
+
+### 📖 Documentation
+
+- CHANGELOG ([2bbe9cc](https://github.com/iceywu/utils/commit/2bbe9cc))
+- 更新文档链接 ([8c64b03](https://github.com/iceywu/utils/commit/8c64b03))
+- [removeTreeData] 增加示例 ([4165925](https://github.com/iceywu/utils/commit/4165925))
+- [Log,LodashLite] 增加方法注释 ([2b7bff5](https://github.com/iceywu/utils/commit/2b7bff5))
+- [getAsyncTask] 增加注释 ([0cf6ed7](https://github.com/iceywu/utils/commit/0cf6ed7))
+- [removeEmptyValues] 对象排空 ([f9e1bf5](https://github.com/iceywu/utils/commit/f9e1bf5))
+
+### 🏡 Chore
+
+- Update deps ([beec195](https://github.com/iceywu/utils/commit/beec195))
+- Update ci ([1567f91](https://github.com/iceywu/utils/commit/1567f91))
+- Update docs link in README ([ddf4e45](https://github.com/iceywu/utils/commit/ddf4e45))
+
+### ❤️ Contributors
+
+- Wangyi <wangyi000327@outlook.com>
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+- An.sun <1319886369@qq.com>
+
 ## v0.0.41
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.40...v0.0.41)

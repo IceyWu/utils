@@ -9,8 +9,8 @@ interface ValItem {
 
 /**
  * @description 简化数据请求
- * @param promise 请求
- * @param valList 自定义配置项
+ * @param  promise 请求
+ * @param  valList 自定义配置项
  * @returns 获取列表
  * @category to
  * @example
@@ -30,7 +30,7 @@ interface ValItem {
  *
  * ```
  */
-export async function toPro<T>(promise: Promise<T>, valList?: ValItem[]) {
+export async function toPro<T, _any>(promise: Promise<T>, valList?: ValItem[]) {
   const [err, res] = await to(promise)
   if (err)
     return [err, undefined]
@@ -45,8 +45,7 @@ export async function toPro<T>(promise: Promise<T>, valList?: ValItem[]) {
       const tempVal = valFormat ? valFormat(valList) : valList
       if (isArray(tempVal) && tempVal.length === 1 && !valFormat)
         dataList.push(tempVal[0])
-      else
-        dataList.push(tempVal)
+      else dataList.push(tempVal)
     })
     return [undefined, dataList]
   }
