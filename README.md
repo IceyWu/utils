@@ -42,12 +42,12 @@ import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>@iceywu/utils</title>
   </head>
   <body>
     <h1>@iceywu/utils Test</h1>
     <script type="module">
-      import { consolePlus } from "https://fastly.jsdelivr.net/npm/@iceywu/utils@0.0.44/dist/index.mjs";
+      import { consolePlus } from "https://fastly.jsdelivr.net/npm/@iceywu/utils@latest/dist/index.mjs";
       consolePlus.log("print", 666);
     </script>
   </body>
