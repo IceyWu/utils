@@ -1,4 +1,3 @@
-/* eslint-disable import/no-duplicates */
 import is from './is'
 
 export * from './is'

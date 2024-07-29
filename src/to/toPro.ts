@@ -3,7 +3,7 @@ import { isArray } from '../is'
 import { to } from './index'
 
 interface ValItem {
-  keys: string[]
+  keys: string | any[]
   valFormat?: any
 }
 
@@ -31,27 +31,31 @@ interface ValItem {
  * ```
  */
 export async function toPro<T, _any>(promise: Promise<T>, valList?: ValItem[]) {
-  const [err, res] = await to(promise)
-  if (err)
-    return [err, undefined]
-
-  if (isArray(valList)) {
-    const resObj = res as any
-    const dataList = [] as any
-    valList.forEach(({ keys, valFormat }) => {
-      const valList = keys.map((key) => {
-        return getObjVal(resObj, key)
-      })
-      const tempVal = valFormat ? valFormat(valList) : valList
-      if (isArray(tempVal) && tempVal.length === 1 && !valFormat)
-        dataList.push(tempVal[0])
-      else dataList.push(tempVal)
+  return to(promise)
+    .then((re: any) => {
+      const [err, res] = re || [undefined, undefined]
+      if (err)
+        return [err, undefined]
+      if (isArray(valList)) {
+        const resObj = res as any
+        const dataList = [] as any
+        valList.forEach(({ keys, valFormat }) => {
+          const tempKeys = isArray(keys) ? keys : [keys]
+          const valList = tempKeys.map((key: any) => {
+            return getObjVal(resObj, key)
+          })
+          const tempVal = valFormat ? valFormat(valList) : valList
+          if (isArray(tempVal) && tempVal.length === 1 && !valFormat)
+            dataList.push(tempVal[0])
+          else dataList.push(tempVal)
+        })
+        return [undefined, dataList]
+      }
+      else {
+        return [undefined, res]
+      }
     })
-    return [undefined, dataList]
-  }
-  else {
-    return [undefined, res]
-  }
+    .catch(err => [err, undefined])
 }
 
 export default {

@@ -1,3 +1,28 @@
+## v0.0.44
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.43...v0.0.44)
+
+### 🩹 Fixes
+
+- [downloadFile] 回调调整 ([b23fe0f](https://github.com/iceywu/utils/commit/b23fe0f))
+- [is-env]移除is（env）环境判断导致引用异常 ([80eb31d](https://github.com/iceywu/utils/commit/80eb31d))
+
+### ❤️ Contributors
+
+- IceyWu <3128006406@qq.com>
+
+## v0.0.43
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.43...v0.0.44)
+
+### 🩹 Fixes
+
+- [downloadFile] 回调调整 ([b23fe0f](https://github.com/iceywu/utils/commit/b23fe0f))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## v0.0.42
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.41...v0.0.42)
