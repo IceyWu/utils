@@ -1,3 +1,23 @@
+## v0.0.45
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.44...v0.0.45)
+
+### 🚀 Enhancements
+
+- [destr] 增加destr方法用于解析JSON ([fc088bd](https://github.com/iceywu/utils/commit/fc088bd))
+
+### 🩹 Fixes
+
+- [toPro] 内部逻辑重构 ([7c0fe9e](https://github.com/iceywu/utils/commit/7c0fe9e))
+
+### 🏡 Chore
+
+- Update deps ([155b6e4](https://github.com/iceywu/utils/commit/155b6e4))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## v0.0.44
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.43...v0.0.44)

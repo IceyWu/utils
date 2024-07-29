@@ -11,6 +11,7 @@
       <button btn @click="download">文件下载</button>
       <button btn @click="removeEmptyValuesFunc">空值移除</button>
       <button btn @click="testTopro">toPro</button>
+      <button btn @click="testFuncTT">test</button>
     </div>
   </div>
 </template>
@@ -22,7 +23,19 @@ import {
   toPro,
   to,
   downloadFile,
+  destr,
+  safeDestr,
+  customDestr,
 } from "../../src";
+const testFuncTT = () => {
+  const testVal = "[foo";
+  console.log(
+    "🐳-------------destr----------------->",
+    customDestr(testVal, { customVal: "default" })
+    // customDestr(testVal)
+  );
+  console.log("🐳-------------destr----------------->", JSON.parse(testVal));
+};
 
 onMounted(() => {
   consolePlus.log("warning", "test");
