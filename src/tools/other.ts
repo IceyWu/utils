@@ -1,3 +1,4 @@
+import debounce from 'debounce'
 /**
  * @description 获取文件类型
  * @param url 文件地址
@@ -52,22 +53,6 @@ export function randomString(length: number): string {
 }
 
 /**
- * @description 防抖函数
- * @param func 函数
- * @param delay 延迟时间
- * @returns { Function } Function:防抖函数
- */
-export function debounce(func: Function, delay: number): Function {
-  let timer: NodeJS.Timeout
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-      func.apply(this, args)
-    }, delay)
-  }
-}
-
-/**
  * @description 节流函数
  * @param func 函数
  * @param delay 延迟时间
@@ -93,10 +78,11 @@ export function throttle(func: Function, delay: number): Function {
   }
 }
 
+export { debounce }
+
 export default {
   getFileType,
   formatNumber,
   randomString,
-  debounce,
   throttle,
 }
