@@ -37,6 +37,9 @@ export function createDownload(blob: Blob, fileName: string) {
  * @param url file url(文件地址)
  * @param fileName file name(文件名)
  * @param callbackList { onSuccess:下载成功 onProcess:下载进度 onError:下载失败 }
+ * @param callbackList.onSuccess 下载成功回调
+ * @param callbackList.onProcess 下载进度回调
+ * @param callbackList.onError 下载失败回调
  * @param option request header(请求头)
  * @returns { stop } stop:停止下载
  */
