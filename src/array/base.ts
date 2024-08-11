@@ -121,3 +121,33 @@ export function removeListEmptyVal<T>(treeList: any[], removeOptions?: RemoveLis
   }
   return treeList
 }
+
+/**
+ * @description 获取数组第一个元素
+ * @param list  被处理的数组
+ * @param defaultVal 默认值(可选)
+ * @returns Array 处理好的数组
+ * @example
+ * ```
+ * arrayFirst([1, 2, 3]) // => 1
+ * arrayFirst(null,{}) // => {}
+ * ```
+ */
+export function arrayFirst(list: any, defaultVal?: any) {
+  return list?.[0] ?? defaultVal
+}
+
+/**
+ * @description 获取数组最后一个元素
+ * @param list  被处理的数组
+ * @param defaultVal 默认值(可选)
+ * @returns Array 处理好的数组
+ * @example
+ * ```
+ * arrayLast([1, 2, 3]) // => 3
+ * arrayLast(null,{}) // => {}
+ * ```
+ */
+export function arrayLast(list: any, defaultVal?: any) {
+  return list?.[list.length - 1] ?? defaultVal
+}
