@@ -39,6 +39,7 @@ export function flat<T>(lists: readonly T[][]): T[] {
  * @param startOrLength  开始值或者长度
  * @param end  结束值
  * @param valueOrMapper  指定值或方法
+ * @param step  步长
  * @returns Array 生成好的值
  * @example
  * list(3)                  // 0, 1, 2, 3
@@ -150,4 +151,54 @@ export function arrayFirst(list: any, defaultVal?: any) {
  */
 export function arrayLast(list: any, defaultVal?: any) {
   return list?.[list.length - 1] ?? defaultVal
+}
+
+export interface DataInfoOptions {
+  base?: any[]
+  fillData?: any | Function
+  isIncludeBase?: boolean
+  num?: number
+}
+/**
+ * @description 数组填充
+ * @param dataInfo 填充数据对象
+ * @returns Array 处理好的数组
+ * ```
+ * const fillData = (i: number) => {
+ *   return {
+ *    add: i,
+ *   };
+ *};
+ * const newList = listFill({
+ *   base: [{ base: 1 }, { base: 2 }],
+ *   fillData,
+ *   isIncludeBase: true,
+ *   num: 4,
+ * });
+ * //   [
+ *  //     {
+ *  //         "base": 1,
+ *  //         "add": 0
+ *  //     },
+ *  //     {
+ *  //         "base": 2,
+ *  //         "add": 1
+ *  //     },
+ *  //     {
+ *  //         "add": 2
+ *  //     },
+ *  //     {
+ *  //         "add": 3
+ *  //     }
+ *  // ]
+ * ```
+ */
+export function listFill(dataInfo: DataInfoOptions): any[] {
+  const { base = [], fillData = {}, isIncludeBase = false, num = 0 } = dataInfo
+  const mapper = isFunction(fillData) ? fillData : () => fillData
+  const baseNum = base.length >= num ? base.length : num
+  const createNum = baseNum - 1 >= 0 ? baseNum - 1 : 0
+  return list(createNum).map((_, index) => {
+    return index < base.length ? (isIncludeBase ? { ...base[index], ...mapper(index) } : base[index]) : mapper(index)
+  })
 }
