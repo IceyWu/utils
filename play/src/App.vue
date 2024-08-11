@@ -7,7 +7,7 @@
     <div class="sticky top-0">
       <TheHeader />
     </div>
-    <div class="w-full box-border">
+    <div class="w-full box-border flex gap-1 flex-col items-center flex-wrap box-border p-4 ">
       <button btn @click="download">文件下载</button>
       <button btn @click="removeEmptyValuesFunc">空值移除</button>
       <button btn @click="testTopro">toPro</button>
@@ -68,8 +68,7 @@ const download = () => {
         console.log("🍪-----err-----", err);
       },
     },
-    {},
-
+    {}
   );
   console.log("🍪-----testD-----", testD);
   // testD();

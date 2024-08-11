@@ -36,6 +36,8 @@ yarn add @iceywu/utils
 import { getAsyncTask, removeEmptyValues } from '@iceywu/utils'
 ```
 
+- [html-code](./play/html/index.html)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">

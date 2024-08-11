@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@iceywu/utils</title>
+  </head>
+  <body>
+    <h1>@iceywu/utils Test</h1>
+    <script type="module">
+      import {
+        consolePlus,
+        listFill,
+      } from "https://fastly.jsdelivr.net/npm/@iceywu/utils@latest/dist/index.mjs";
+      const fillData = (index) => {
+        return {
+          add: index,
+        };
+      };
+      const newList = listFill({
+        base: [{ base: 1 }, { base: 2 }],
+        fillData,
+        isIncludeBase: true,
+        num: 4,
+      });
+      consolePlus.log("🍪-----newList-----", newList);
+    </script>
+  </body>
+</html>
