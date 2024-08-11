@@ -1,3 +1,27 @@
+## v0.0.46
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.45...v0.0.46)
+
+### 🚀 Enhancements
+
+- [array] 增加arrayFirst和arrayLast方法用于获取数组首尾元素 ([9cc5df1](https://github.com/iceywu/utils/commit/9cc5df1))
+- [debounce] 增加防抖函数至工具包 ([6e1e9c3](https://github.com/iceywu/utils/commit/6e1e9c3))
+- [array] 增加listFill方法用于数组填充 ([4d83ff9](https://github.com/iceywu/utils/commit/4d83ff9))
+
+### 📖 Documentation
+
+- Update ([4b57cd4](https://github.com/iceywu/utils/commit/4b57cd4))
+- [download] 注解调整 ([3ac4f6e](https://github.com/iceywu/utils/commit/3ac4f6e))
+
+### 🏡 Chore
+
+- Update CHANGELOG ([d3717b0](https://github.com/iceywu/utils/commit/d3717b0))
+- 更新依赖包至最新版本 ([1d64ba2](https://github.com/iceywu/utils/commit/1d64ba2))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## v0.0.45
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.44...v0.0.45)
