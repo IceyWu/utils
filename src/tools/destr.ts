@@ -3,7 +3,7 @@ const suspectProtoRx
 const suspectConstructorRx
   = /"(?:c|\\u0063)(?:o|\\u006[Ff])(?:n|\\u006[Ee])(?:s|\\u0073)(?:t|\\u0074)(?:r|\\u0072)(?:u|\\u0075)(?:c|\\u0063)(?:t|\\u0074)(?:o|\\u006[Ff])(?:r|\\u0072)"\s*:/
 // eslint-disable-next-line
-const JsonSigRx = /^\s*["[{]|^\s*-?\d{1,16}(\.\d{1,17})?(E[+-]?\d+)?\s*$/i
+const JsonSigRx = /^\s*["[{]|^\s*-?\d{1,16}(\.\d{1,17})?(E[+-]?\d+)?\s*$/i;
 
 function jsonParseTransform(key: string, value: any): any {
   if (
@@ -43,16 +43,11 @@ export interface Options {
  */
 export function destr<T = unknown>(value: any, options: Options = {}): T {
   if (typeof value !== 'string') {
-    return value
+    return options.customVal === undefined ? value : (options.customVal as T)
   }
 
   const _value = value.trim()
-  if (
-
-    value[0] === '"'
-    && value.endsWith('"')
-    && !value.includes('\\')
-  ) {
+  if (value[0] === '"' && value.endsWith('"') && !value.includes('\\')) {
     return _value.slice(1, -1) as T
   }
 
