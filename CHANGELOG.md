@@ -1,3 +1,15 @@
+## v0.0.47
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.47...v0.0.48)
+
+### 💅 Refactors
+
+- 优化lodash-lite模块导出 ([7736d0c](https://github.com/iceywu/utils/commit/7736d0c))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## v0.0.46
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.45...v0.0.46)
