@@ -1,5 +1,5 @@
-import get from 'lodash/get'
-import set from 'lodash/set'
+import get_base from 'lodash/get'
+import set_base from 'lodash/set'
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 import { removeListEmptyVal } from '../array'
 import type { DeepPartial } from '../types'
@@ -120,8 +120,10 @@ export function setObjValue(
   keys: string | string[],
   value: any,
 ): any {
-  return set(obj, keys, value)
+  return set_base(obj, keys, value)
 }
+
+export const set = setObjValue
 /**
  * @description 获取对象属性
  * @param data 对象
@@ -134,8 +136,10 @@ export function getObjVal(
   path: string | string[],
   defaultValue: any = undefined,
 ) {
-  return get(data, path, defaultValue)
+  return get_base(data, path, defaultValue)
 }
+
+export const get = getObjVal
 
 /**
  * Remove empty values from objects, including empty arrays
@@ -277,8 +281,6 @@ export const removeTreeData: any = (
   return result
 }
 
-export { get, set }
-
 export default {
   // deepClone,
   deepClone2,
@@ -290,6 +292,7 @@ export default {
   setObjValue,
   getObjVal,
   removeTreeData,
-  get,
   set,
+  get,
+
 }

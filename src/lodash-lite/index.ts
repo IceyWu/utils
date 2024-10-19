@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import fromPairs from 'lodash/fromPairs'
 import sortBy from 'lodash/sortBy'
 import toPairs from 'lodash/toPairs'
-import isEqualWith from 'lodash/isEqualWith'
+import isEqualWithBae from 'lodash/isEqualWith'
 
 /**
  * @description Sorts an object by its keys(对象排序)
@@ -81,12 +81,14 @@ export function deepClone(data: Record<string, any>): Record<string, any> {
 export function compareObjects(oldVal: any, newVal: any): any {
   const differences: any = {}
   Object.keys(newVal).forEach((key) => {
-    if (!isEqualWith(newVal[key], oldVal[key]))
+    if (!isEqualWithBae(newVal[key], oldVal[key]))
       differences[key] = newVal[key]
   })
   return differences
 }
 
-export {
-  isEqualWith,
+export default {
+  sortObj,
+  deepClone,
+  compareObjects,
 }
