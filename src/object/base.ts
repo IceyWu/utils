@@ -126,10 +126,15 @@ export function setObjValue(
  * @description 获取对象属性
  * @param data 对象
  * @param path 属性路径 支持数组 ['a', 'b', 'c'] 或字符串 'a'
+ * @param defaultValue 默认值，当属性值为 undefined 时返回
  * @returns { any } any:属性值
  */
-export function getObjVal(data: any, path: string | string[]) {
-  return get(data, path)
+export function getObjVal(
+  data: any,
+  path: string | string[],
+  defaultValue: any = undefined,
+) {
+  return get(data, path, defaultValue)
 }
 
 /**
@@ -183,7 +188,11 @@ export function removeEmptyValues(obj: any, exclude?: excludeOptions) {
       result[key] = val
     else if (!isEmpty(val))
       result[key] = removeEmptyValues(val, exclude)
-    if (isEmpty(result[key]) && !vals.includes(result[key]) && !keys.includes(key)) {
+    if (
+      isEmpty(result[key])
+      && !vals.includes(result[key])
+      && !keys.includes(key)
+    ) {
       delete result[key]
     }
   })
@@ -268,6 +277,8 @@ export const removeTreeData: any = (
   return result
 }
 
+export { get, set }
+
 export default {
   // deepClone,
   deepClone2,
@@ -279,4 +290,6 @@ export default {
   setObjValue,
   getObjVal,
   removeTreeData,
+  get,
+  set,
 }

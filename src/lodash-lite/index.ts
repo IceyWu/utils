@@ -86,3 +86,7 @@ export function compareObjects(oldVal: any, newVal: any): any {
   })
   return differences
 }
+
+export {
+  isEqualWith,
+}
