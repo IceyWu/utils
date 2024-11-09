@@ -129,14 +129,17 @@ export const set = setObjValue
  * @param data 对象
  * @param path 属性路径 支持数组 ['a', 'b', 'c'] 或字符串 'a'
  * @param defaultValue 默认值，当属性值为 undefined 时返回
+ * @param isIncludedNull 是否包含 null 值
  * @returns { any } any:属性值
  */
 export function getObjVal(
   data: any,
   path: string | string[],
   defaultValue: any = undefined,
+  isIncludedNull: boolean = true,
 ) {
-  return get_base(data, path, defaultValue)
+  const val = get_base(data, path, defaultValue)
+  return (isIncludedNull && val === null) ? defaultValue : val
 }
 
 export const get = getObjVal
