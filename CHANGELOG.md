@@ -1,3 +1,7 @@
+## v0.0.48
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.48...v0.0.49)
+
 ## v0.0.47
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.47...v0.0.48)
