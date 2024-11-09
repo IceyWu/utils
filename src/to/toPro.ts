@@ -1,5 +1,5 @@
-import { getObjVal } from '../object'
 import { isArray } from '../is'
+import { getObjVal } from '../object'
 import { to } from './index'
 
 interface ValItem {

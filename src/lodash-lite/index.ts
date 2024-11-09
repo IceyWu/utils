@@ -1,8 +1,9 @@
 import cloneDeep from 'lodash/cloneDeep'
 import fromPairs from 'lodash/fromPairs'
+import isEqualWithBae from 'lodash/isEqualWith'
+import nth from 'lodash/nth'
 import sortBy from 'lodash/sortBy'
 import toPairs from 'lodash/toPairs'
-import isEqualWithBae from 'lodash/isEqualWith'
 
 /**
  * @description Sorts an object by its keys(对象排序)
@@ -87,8 +88,27 @@ export function compareObjects(oldVal: any, newVal: any): any {
   return differences
 }
 
+/**
+ * @description 获取array数组的第n个元素。如果n为负数，则返回从数组结尾开始的第n个元素。
+ * @param array (Array): 要查询的数组。
+ * @param n (number): 要返回元素的索引。
+ * @param defaultVal 默认值(可选)
+ * @returns {*} 返回array数组的第n个元素。
+ * @example
+ * ```
+ * nth(['a', 'b', 'c', 'd'], 1);
+ * // => 'b'
+ * nth(['a', 'b', 'c', 'd'], -2);
+ * // => 'c'
+ * ```
+ */
+export function arrayNth(array: any[], n: number, defaultVal?: any): any {
+  return nth(array, n) ?? defaultVal
+}
+
 export default {
   sortObj,
   deepClone,
   compareObjects,
+  arrayNth,
 }

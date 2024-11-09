@@ -1,6 +1,6 @@
 import type { Awaitable } from '../types'
-import { getObjVal } from '../object'
 import { isArray } from '../is'
+import { getObjVal } from '../object'
 
 interface Rules {
   keys: string | string[]

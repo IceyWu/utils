@@ -1,8 +1,8 @@
+import type { DeepPartial } from '../types'
 import get_base from 'lodash/get'
 import set_base from 'lodash/set'
-import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 import { removeListEmptyVal } from '../array'
-import type { DeepPartial } from '../types'
+import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 
 /**
  * A deep clone method to ensure that circular references are avoided.

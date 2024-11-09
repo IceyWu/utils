@@ -139,6 +139,21 @@ export function arrayFirst(list: any, defaultVal?: any) {
 }
 
 /**
+ * @description 获取数组指定位置区间元素，组成新数组
+ * @param list  被处理的数组
+ * @param start 开始位置
+ * @param end 结束位置
+ * @returns Array 处理好的数组
+ * @example
+ * ```
+ * arraySlice([1, 2, 3, 4, 5], 1, 3) // => [2, 3, 4]
+ * ```
+ */
+export function arraySlice(list: any[], start: number, end: number) {
+  return list.slice(start, end)
+}
+
+/**
  * @description 获取数组最后一个元素
  * @param list  被处理的数组
  * @param defaultVal 默认值(可选)

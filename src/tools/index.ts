@@ -1,8 +1,8 @@
-import other from './other'
 import destr from './destr'
+import other from './other'
 
-export * from './other'
 export * from './destr'
+export * from './other'
 
 export const UTools = {
   ...other,
