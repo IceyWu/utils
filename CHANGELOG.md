@@ -1,3 +1,19 @@
+## v0.0.49
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.48...v0.0.49)
+
+### 🚀 Enhancements
+
+- 添加axios依赖，优化文件类型识别，更新fetch响应处理逻辑 ([bd0ec85](https://github.com/iceywu/utils/commit/bd0ec85))
+
+### 📖 Documentation
+
+- 更新CHANGELOG，添加v0.0.48版本信息 ([d488858](https://github.com/iceywu/utils/commit/d488858))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](http://github.com/Life-Palette))
+
 ## v0.0.48
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.48...v0.0.49)
