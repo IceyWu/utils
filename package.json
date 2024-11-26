@@ -36,12 +36,10 @@
     "lint": "eslint .",
     "lint-fix": "nr lint --fix",
     "prepublishOnly": "npm run build",
-    "release": "bumpp --commit --push --tag && npm publish --registry https://registry.npmjs.org",
-    "changelog": "npx changelogen@latest --bump",
+    "release": "changelogen --release && npm publish --registry https://registry.npmjs.org && git push --follow-tags",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "docs": "npm -C docs run docs:dev",
     "play": "npm -C play run dev"
   },
   "dependencies": {
@@ -49,14 +47,14 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.8.0",
-    "@antfu/ni": "^0.23.0",
+    "@antfu/eslint-config": "^3.10.0",
+    "@antfu/ni": "^0.23.1",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/lodash": "^4.17.13",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.0",
     "@types/throttle-debounce": "^5.0.2",
     "bumpp": "^9.8.1",
     "changelogen": "^0.5.7",
@@ -64,15 +62,15 @@
     "eslint-ts-patch": "9.8.0-1",
     "esno": "^4.8.0",
     "p-limit": "^6.1.0",
-    "rollup": "^4.24.4",
+    "rollup": "^4.27.4",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-uglify": "^6.0.4",
     "rollup-plugin-visualizer": "^5.12.0",
     "throttle-debounce": "5.0.2",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10",
-    "vitest": "^2.1.4"
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.5"
   },
   "publishConfig": {
     "access": "public",

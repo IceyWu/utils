@@ -8,14 +8,15 @@
       <TheHeader />
     </div>
     <div class="w-full box-border flex gap-1 flex-col items-center flex-wrap box-border p-4 ">
-      <button btn @click="download">文件下载</button>
+      <!-- <button btn @click="download">文件下载</button>
       <button btn @click="removeEmptyValuesFunc">空值移除</button>
-      <button btn @click="testTopro">toPro</button>
+      <button btn @click="testTopro">toPro</button> -->
       <button btn @click="testFuncTT">test</button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import axios from "axios";
 import {
   list,
   consolePlus,
@@ -26,15 +27,40 @@ import {
   destr,
   safeDestr,
   customDestr,
+  getResponse,
+  getStreamResponse
 } from "../../src";
-const testFuncTT = () => {
-  const testVal = "[foo";
-  console.log(
-    "🐳-------------destr----------------->",
-    customDestr(testVal, { customVal: "default" })
-    // customDestr(testVal)
-  );
-  console.log("🐳-------------destr----------------->", JSON.parse(testVal));
+const testFuncTT = async () => {
+  // getResponse()
+  const url = 'https://test.wktest.cn:3001/api/topic?page=1&size=100&sort=desc,createdAt'
+  const resp = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  // 使用axios
+  // const resp = await axios.get(url, {
+  //   // headers: {
+  //   //   'Content-Type': 'application/json',
+  //   // },
+  //   responseType: 'stream'
+  // })
+  console.log('🍭-----resp-----', resp);
+  getStreamResponse(resp, (res) => {
+    console.log('🐳-----res-----', res);
+  }).then((res) => {
+    // console.log('7878-----res-----', res);
+  }).catch((err) => {
+    // console.log('8989-----err-----', err);
+  })
+  // const testVal = "565";
+  // console.log(
+  //   "🐳-------------destr----------------->",
+  //   customDestr(testVal, { customVal: [] })
+  //   // customDestr(testVal)
+  // );
+  // // console.log("🐳-------------destr----------------->", JSON.parse(testVal));
 };
 
 onMounted(() => {

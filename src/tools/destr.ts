@@ -9,9 +9,9 @@ function jsonParseTransform(key: string, value: any): any {
   if (
     key === '__proto__'
     || (key === 'constructor'
-      && value
-      && typeof value === 'object'
-      && 'prototype' in value)
+    && value
+    && typeof value === 'object'
+    && 'prototype' in value)
   ) {
     warnKeyDropped(key)
     return

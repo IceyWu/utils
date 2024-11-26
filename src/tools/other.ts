@@ -9,17 +9,17 @@ export function getFileType(url: string): string {
   if (!url)
     return 'other'
   const fileTypes: { [key: string]: string[] } = {
-    image: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
-    video: ['mp4', 'avi', 'mov'],
+    image: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp', 'tiff', 'ico', 'heic', 'heif', 'raw', 'cr2', 'nef', 'orf', 'sr2', 'psd', 'ai', 'eps', 'indd'],
+    video: ['mp4', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'webm', 'mpeg', '3gp'],
     pdf: ['pdf'],
-    document: ['doc', 'docx', 'txt'],
-    audio: ['mp3', 'wav', 'ogg'],
-    zip: ['zip', 'rar', '7z'],
-    excel: ['xls', 'xlsx', 'csv'],
-    ppt: ['ppt', 'pptx'],
-    code: ['js', 'html', 'css', 'java', 'cpp', 'py'],
-    executable: ['exe', 'msi'],
-    presentation: ['key'],
+    document: ['doc', 'docx', 'txt', 'rtf', 'odt', 'md', 'tex'],
+    audio: ['mp3', 'wav', 'ogg', 'flac', 'aac', 'm4a', 'wma', 'aiff'],
+    zip: ['zip', 'rar', '7z', 'tar', 'gz', 'bz2', 'xz'],
+    excel: ['xls', 'xlsx', 'csv', 'ods'],
+    ppt: ['ppt', 'pptx', 'odp', 'key'],
+    code: ['js', 'html', 'css', 'java', 'cpp', 'py', 'ts', 'rb', 'php', 'cs', 'go', 'rs', 'swift', 'kt', 'scala'],
+    executable: ['exe', 'msi', 'bat', 'sh', 'bin', 'apk', 'dmg', 'iso'],
+    presentation: ['key', 'odp'],
   }
   const fileExtension = url.split('.').pop()?.toLowerCase()
   for (const fileType in fileTypes) {
