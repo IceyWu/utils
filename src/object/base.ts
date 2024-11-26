@@ -1,6 +1,6 @@
+import type { DeepPartial } from '../types'
 import get_base from 'lodash/get'
 import set_base from 'lodash/set'
-import type { DeepPartial } from '../types'
 import { removeListEmptyVal } from '../array'
 import { isArray, isDate, isEmpty, isObject, isRegExp } from '../is'
 
