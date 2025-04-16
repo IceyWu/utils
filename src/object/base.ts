@@ -134,11 +134,11 @@ export const set = setObjValue
  */
 export function getObjVal(
   data: any,
-  path: string | string[],
+  path: string | string[] | undefined,
   defaultValue: any = undefined,
   isIncludedNull: boolean = true,
 ) {
-  const val = get_base(data, path, defaultValue)
+  const val = isEmpty(path) ? data : get_base(data, path as string | string[], defaultValue)
   return (isIncludedNull && val === null) ? defaultValue : val
 }
 
