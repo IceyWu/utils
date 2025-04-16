@@ -1,3 +1,23 @@
+## v0.0.50
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.49...v0.0.50)
+
+### 🩹 Fixes
+
+- Lint ([e6e62ab](https://github.com/iceywu/utils/commit/e6e62ab))
+- Lint ([f114bc7](https://github.com/iceywu/utils/commit/f114bc7))
+- [getObjVal] 更新getObjVal函数以支持未定义的路径参数 ([af2bc17](https://github.com/iceywu/utils/commit/af2bc17))
+- [getAsyncTask] 更新getAsyncTask函数，支持可选参数和自动启动功能，优化任务执行逻辑 ([471c1ee](https://github.com/iceywu/utils/commit/471c1ee))
+
+### 🏡 Chore
+
+- **release:** V0.0.49 ([e96ce7e](https://github.com/iceywu/utils/commit/e96ce7e))
+- Update deps ([16a045a](https://github.com/iceywu/utils/commit/16a045a))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](https://github.com/Life-Palette))
+
 ## v0.0.49
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.48...v0.0.49)
