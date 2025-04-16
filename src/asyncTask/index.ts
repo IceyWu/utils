@@ -3,26 +3,29 @@ import { isArray } from '../is'
 import { getObjVal } from '../object'
 
 interface Rules {
-  keys: string | string[]
-  val: any
+  keys?: string | string[]
+  val?: any
+  predicate?: (val: any) => boolean
 }
 export interface GetAsyncTaskOptions {
   rules?: Rules[]
   params?: any
   asyncTime?: number
   maxTimes?: number
+  autoStart?: boolean
 }
 
 export interface GetAsyncTaskReturn {
   task: Promise<any>
   stop: () => void
+  start: () => void
 }
 
 /**
  * @description 异步任务
  * @param request 请求函数
- * @param option 选项 rules:判断条件 params:请求参数 asyncTime:异步时间 maxTimes:最大次数
- * @returns { task, stop } task:异步任务 stop:停止异步任务
+ * @param option 选项 rules:判断条件 params:请求参数 asyncTime:异步时间 maxTimes:最大次数 autoStart:是否自动开始
+ * @returns { task, stop, start } task:异步任务 stop:停止异步任务 start:开始异步任务
  * @example
  * ```
  * // rules:判断条件
@@ -41,42 +44,72 @@ export interface GetAsyncTaskReturn {
  *      {
  *         keys: ["data", "complete"],
  *         val: true,
+ *        // 优先级高于val
+ *        predicate: (val) => val === true,
  *      }
  *    ];
  *    const params = {};
- *    const { task } = getAsyncTask(asyncTaskApi, { rules, params });
- *
+ *    const { task, stop, start } = getAsyncTask(asyncTaskApi, { rules, params, asyncTime:1000, maxTimes:-1, autoStart: false });
+ *    start(); // 手动开始任务
  * ```
  */
 export function getAsyncTask(request: Awaitable<any>, option: GetAsyncTaskOptions): GetAsyncTaskReturn {
   let timer: string | number | NodeJS.Timeout | undefined
   let index = 0
   let stopFlag = false
-  const { rules = [], params, asyncTime = 1000, maxTimes = -1 } = option
+  let started = false // 标记是否已经开始
+  const { rules = [], asyncTime = 1000, maxTimes = -1, autoStart = true } = option
+
+  const getParams = () => (typeof option.params === 'function' ? option.params() : option.params)
+
+  // 提取重复逻辑到一个独立函数
+  const executeTask = async (resolve: (value: any) => void) => {
+    const res = await request(getParams())
+    if (!res)
+      return res
+
+    const isComplete = rules.every(({ keys, val, predicate }) => {
+      const actualVal = getObjVal(res, keys)
+      return predicate ? predicate(actualVal) : actualVal === val
+    })
+
+    if (isComplete || (maxTimes >= 0 && index > maxTimes) || stopFlag) {
+      clearTimeout(timer)
+      resolve(res)
+    }
+    else {
+      index++
+      timer = setTimeout(() => executeTask(resolve), asyncTime)
+    }
+  }
 
   const task = new Promise((resolve) => {
-    const getAsyncTask = async () => {
-      const res = await request(params)
-      if (!res)
-        return res
-      const isComplete = rules.every(({ keys, val }) => getObjVal(res, keys) === val)
-      if (isComplete || (maxTimes >= 0 && index > maxTimes) || stopFlag) {
-        clearTimeout(timer)
-        resolve(res)
-      }
-      else {
-        index++
-        timer = setTimeout(() => {
-          getAsyncTask()
-        }, asyncTime)
+    const startTask = () => {
+      if (!started) {
+        started = true
+        stopFlag = false // 重置 stopFlag
+        executeTask(resolve)
       }
     }
-    getAsyncTask()
+
+    if (autoStart) {
+      startTask()
+    }
   })
+
   return {
     task,
+    start() {
+      if (!started) {
+        started = true
+        stopFlag = false
+        timer = setTimeout(() => executeTask(() => {}), 0)
+      }
+    },
     stop() {
       stopFlag = true
+      started = false
+      clearTimeout(timer)
     },
   }
 }
