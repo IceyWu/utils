@@ -145,6 +145,32 @@ export function getObjVal(
 export const get = getObjVal
 
 /**
+ * @description 获取对象属性通过key列表（只要取到有效值就返回，否则返回默认值）
+ * @param data 对象
+ * @param keys 键列表
+ * @param defaultValue 默认值，当所有属性值为 undefined/null 时返回
+ * @param returnFn 返回函数
+ * @returns { any } any:属性值
+ */
+export function getObjValByKeys(
+  data: any,
+  keys: string[],
+  defaultValue: any = undefined,
+  returnFn?: (val: any) => any,
+): any {
+  if (!isArray(keys) || keys.length === 0)
+    return data
+  for (let i = 0; i < keys.length; i++) {
+    const val = getObjVal(data, keys[i], undefined)
+    const _returnFn = returnFn || ((val: any) => !isEmpty(val))
+    if (_returnFn(val)) {
+      return val
+    }
+  }
+  return defaultValue
+}
+
+/**
  * Remove empty values from objects, including empty arrays
  * 去除对象中的空值，包括空数组
  *
