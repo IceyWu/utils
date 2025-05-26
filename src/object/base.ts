@@ -323,5 +323,5 @@ export default {
   removeTreeData,
   set,
   get,
-
+  getObjValByKeys,
 }

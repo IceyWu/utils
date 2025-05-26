@@ -2,7 +2,7 @@
   "name": "@iceywu/utils",
   "type": "module",
   "version": "0.0.50",
-  "description": "nothing to use 🧪",
+  "description": "Collection of common JavaScript / TypeScript utils 🧪",
   "author": "Icey Wu <3128006406@qq.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/iceywu",
