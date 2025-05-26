@@ -1,3 +1,21 @@
+## v0.0.51
+
+[compare changes](https://github.com/iceywu/utils/compare/v0.0.50...v0.0.51)
+
+### 🚀 Enhancements
+
+- Add @rollup/plugin-babel for Babel integration and create toTry utility function ([5c5a65c](https://github.com/iceywu/utils/commit/5c5a65c))
+- [Object] add getObjValByKeys function to retrieve object values by key list ([8b97989](https://github.com/iceywu/utils/commit/8b97989))
+- [shared] add randomStr ([a074ea0](https://github.com/iceywu/utils/commit/a074ea0))
+
+### 🏡 Chore
+
+- **release:** V0.0.50 ([50c4aaf](https://github.com/iceywu/utils/commit/50c4aaf))
+
+### ❤️ Contributors
+
+- IceyWu ([@Life-Palette](https://github.com/Life-Palette))
+
 ## v0.0.50
 
 [compare changes](https://github.com/iceywu/utils/compare/v0.0.49...v0.0.50)
